@@ -16,7 +16,7 @@ import kr.ac.jbnu.se.advweb.product.model.UserAccount;
 import kr.ac.jbnu.se.advweb.product.utils.DBUtils;
 import kr.ac.jbnu.se.advweb.product.utils.MyUtils;
 
-@WebServlet(urlPatterns = { "/login" })
+@WebServlet(urlPatterns = { "/logins" })
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 		// Forward to /WEB-INF/views/loginView.jsp
 		// (Users can not access directly into JSP pages placed in WEB-INF)
 		RequestDispatcher dispatcher //
-				= this.getServletContext().getRequestDispatcher("/WEB-INF/views/loginView.jsp");
+				= this.getServletContext().getRequestDispatcher("/WEB-INF/views/login_bootstrap.jsp");
 
 		dispatcher.forward(request, response);
 
@@ -83,7 +83,7 @@ public class LoginServlet extends HttpServlet {
 
 			// Forward to /WEB-INF/views/login.jsp
 			RequestDispatcher dispatcher //
-					= this.getServletContext().getRequestDispatcher("/WEB-INF/views/loginView.jsp");
+					= this.getServletContext().getRequestDispatcher("/WEB-INF/views/login_bootstrap.jsp");
 
 			dispatcher.forward(request, response);
 		}
