@@ -39,10 +39,11 @@ public class CreateProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Connection conn = MyUtils.getStoredConnection(request);
-
+		
 		String code = (String) request.getParameter("code");
 		String name = (String) request.getParameter("name");
 		String priceStr = (String) request.getParameter("price");
+		
 		float price = 0;
 		try {
 			price = Float.parseFloat(priceStr);

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
    <head>
@@ -21,12 +21,14 @@
 					{
 						// move another page
 						var win = window.open();
-						win.document.write(data);
+ 						win.document.write(data);
 					}
 			);
 		});
 	})
 	</script>
+	
+	
    </head>
    <body>
       <jsp:include page="_header.jsp"></jsp:include>
@@ -35,30 +37,6 @@
       <h3>Login Page</h3>
       <p style="color: red;">${errorString}</p>
  
-<!--  old code -->
-<%--       <form method="POST" action="${pageContext.request.contextPath}/login"> --%>
-<!--          <table border="0"> -->
-<!--             <tr> -->
-<!--                <td>User Name</td> -->
-<%--                <td><input type="text" name="userName" value= "${user.userName}" /> </td> --%>
-<!--             </tr> -->
-<!--             <tr> -->
-<!--                <td>Password</td> -->
-<%--                <td><input type="text" name="password" value= "${user.password}" /> </td> --%>
-<!--             </tr> -->
-<!--             <tr> -->
-<!--                <td>Remember me</td> -->
-<!--                <td><input type="checkbox" name="rememberMe" value= "Y" /> </td> -->
-<!--             </tr> -->
-<!--             <tr> -->
-<!--                <td colspan ="2"> -->
-<!--                   <input type="submit" value= "Submit" /> -->
-<%--                   <a href="${pageContext.request.contextPath}/">Cancel</a> --%>
-<!--                </td> -->
-<!--             </tr> -->
-<!--          </table> -->
-<!--       </form> -->
-
 	<!--  new code --> 
 	<form id="login_form_id" method="POST">
          <table border="0">
@@ -76,13 +54,18 @@
             </tr>
             <tr>
                <td colspan ="2">
-                  <input type="submit" value= "Submit" />
-                  <a href="${pageContext.request.contextPath}/">Cancel</a>
+                  <a href="${pageContext.request.contextPath}/home">Cancel</a>
                </td>
             </tr>
+            <tr>
+				<td colspan="1"><input type="submit" value="로그인"/></td>
+			</tr>
          </table>
       </form>
- 
+      <a href="${pageContext.request.contextPath}/recoveringID">아이디 찾기</a>
+      <a href="${pageContext.request.contextPath}/recoveringPW">비밀번호 찾기</a>                 
+      <a href="${pageContext.request.contextPath}/registration">회원가입</a>
+
       <p style="color:blue;">User Name: tom, password: tom001 or jerry/jerry001</p>
  
       <jsp:include page="_footer.jsp"></jsp:include>

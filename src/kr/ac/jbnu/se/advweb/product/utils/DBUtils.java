@@ -115,6 +115,18 @@ public class DBUtils {
 
 		pstm.executeUpdate();
 	}
+	
+	public static void insertUser(Connection conn, UserAccount useraccount) throws SQLException {
+		String sql = "Insert into USER_ACCOUNT(USER_NAME, GENDER,PASSWORD) values (?,?,?)";
+
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		
+		pstm.setString(1, useraccount.getUserName());
+		pstm.setString(2, "M");
+		pstm.setString(3, useraccount.getPassword());
+
+		pstm.executeUpdate();
+	}
 
 	public static void deleteProduct(Connection conn, String code) throws SQLException {
 		String sql = "Delete From Product where Code= ?";

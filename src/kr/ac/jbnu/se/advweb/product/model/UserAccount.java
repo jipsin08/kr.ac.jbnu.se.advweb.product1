@@ -8,11 +8,17 @@ public class UserAccount {
 	private String userName;
 	private String gender;
 	private String password;
-
-	public UserAccount() {
-
+	
+	public UserAccount(){
+		
 	}
 
+	//회원가입 때 이용할 생성자
+	public UserAccount(String userName, String password) {
+		this.userName = userName;
+		this.password = password;
+	}
+	
 	public String getUserName() {
 		return userName;
 	}
