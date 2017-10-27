@@ -28,10 +28,9 @@
 	</head>
 	<body>
 		<h3>RecoveringID Page</h3>
-	
-		<h2><a href="${pageContext.request.contextPath}/">홈화면</a></h2>
-		<h2><a href="${pageContext.request.contextPath}/recoveringPW">비밀번호 찾기</a><br/></h2>
-
+		
+		<jsp:include page="_menu_recoveringID.jsp"></jsp:include>
+		
 		This is where clients ask us to find their ID were forgotten. &amp; Jdbc.
 		<br>
 		<br>
@@ -59,6 +58,9 @@
                		<td>Gender</td>
                		<td><input type="text" id = "gender_id" name="gender" value= "${user.gender}" /> </td>
                 </tr>
+				<tr>
+					<td><strong><p style="color: red;">${errorString}</p></strong></td>
+				</tr>                
                	<tr>
 					<td colspan="1"><input type="submit" value="확인"/></td>
 				</tr>

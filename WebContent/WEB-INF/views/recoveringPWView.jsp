@@ -31,8 +31,9 @@
 <body>
 	<h3>RecoveringPW Page</h3>
 	
-	<h2><a href="${pageContext.request.contextPath}/">Back to Home</a></h2>
-	<h2><a href="${pageContext.request.contextPath}/recoveringID">Recovering ID</a><br/></h2>
+	<p style="color: red;">${errorString}</p>
+	
+	<jsp:include page="_menu_recoveringPW.jsp"></jsp:include>
 
 	This is where clients ask us to find their PW were forgotten. &amp; Jdbc.
 	<br>

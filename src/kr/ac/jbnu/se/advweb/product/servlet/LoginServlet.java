@@ -103,8 +103,8 @@ public class LoginServlet extends HttpServlet {
 				MyUtils.deleteUserCookie(response);
 			}
 
-			// Redirect to userInfo page.
-			response.sendRedirect(request.getContextPath() + "/userInfo");
+			// Redirect to loginedHome page.
+			response.sendRedirect(request.getContextPath() + "/LoginedHome");
 		}
 	}
 

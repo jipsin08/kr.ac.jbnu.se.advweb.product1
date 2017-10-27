@@ -65,7 +65,7 @@ public class RecoveringPWServlet extends HttpServlet {
 
 						if (user == null) {
 							hasError = true;
-							errorString = "password is invalid";
+							errorString = "your information is invalid";
 						}
 					} catch (SQLException e) {
 						e.printStackTrace();
@@ -85,7 +85,7 @@ public class RecoveringPWServlet extends HttpServlet {
 
 					// Forward to /WEB-INF/views/login.jsp
 					RequestDispatcher dispatcher //
-							= this.getServletContext().getRequestDispatcher("/WEB-INF/views/loginView.jsp");
+							= this.getServletContext().getRequestDispatcher("/WEB-INF/views/recoveringPWView.jsp");
 
 					dispatcher.forward(request, response);
 				}
