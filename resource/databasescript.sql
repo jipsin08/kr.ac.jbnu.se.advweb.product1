@@ -35,7 +35,7 @@ values ('jerry', 'M', 'jerry001');
  
 insert into product (CODE, NAME, PRICE)
 values ('P001', 'Java Core', 100);
- 
+ q\
 insert into product (CODE, NAME, PRICE)
 values ('P002', 'C# Core', 90);
 select * from product;

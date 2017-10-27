@@ -11,19 +11,20 @@
 	<jsp:include page="_header.jsp"></jsp:include>
 	<jsp:include page="_menu.jsp"></jsp:include>
 
-	<h3>Home Page</h3>
+	<h3><strong>Title</strong></h3>
 
-	This is demo Simple web application using jsp,servlet &amp; Jdbc.
+	<em>This is subx2 title of this page, changing is required.</em> &amp; Jdbc.
 	<br>
 	<br>
-	<b>It includes the following functions:</b>
+	<b>This Project should includes the following functions:</b>
 	<ul>
-		<li>Login</li>
-		<li>Storing user information in cookies</li>
-		<li>Product List</li>
-		<li>Create Product</li>
-		<li>Edit Product</li>
-		<li>Delete Product</li>
+		<li>Login/Logout functions in proper situation.</li>
+		<li>Storing user information in cookies with session.</li>
+		<li>Blog Post List</li>
+		<li>Create Post</li>
+		<li>Edit Post</li>
+		<li>Delete Post</li>
+		<li>Add favorite<em>(other Blog)</em></li>
 	</ul>
 
 	<jsp:include page="_footer.jsp"></jsp:include>

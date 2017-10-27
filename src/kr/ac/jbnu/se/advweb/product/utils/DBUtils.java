@@ -33,6 +33,50 @@ public class DBUtils {
 		}
 		return null;
 	}
+	
+	public static UserAccount recoveringID(Connection conn, //
+			String gender, String password) throws SQLException {
+		
+		String sql = "Select a.User_Name, a.Password, a.Gender from User_Account a " //
+				+ " where a.Gender = ? and a.password= ?";
+		
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		pstm.setString(1, gender);
+		pstm.setString(2, password);
+		ResultSet rs = pstm.executeQuery();
+		
+		if (rs.next()) {
+			String userName = rs.getString("User_Name");
+			UserAccount user = new UserAccount();
+			user.setUserName(userName);
+			user.setPassword(password);
+			user.setGender(gender);
+			return user;
+		}
+		return null;
+	}
+	
+	public static UserAccount recoveringPW(Connection conn, //
+			String gender, String username) throws SQLException {
+		
+		String sql = "Select a.User_Name, a.Password, a.Gender from User_Account a " //
+				+ " where a.Gender = ? and a.User_Name= ?";
+		
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		pstm.setString(1, gender);
+		pstm.setString(2, username);
+		ResultSet rs = pstm.executeQuery();
+		
+		if (rs.next()) {
+			String password = rs.getString("password");
+			UserAccount user = new UserAccount();
+			user.setUserName(username);
+			user.setPassword(password);
+			user.setGender(gender);
+			return user;
+		}
+		return null;
+	}	
 
 	public static UserAccount findUser(Connection conn, String userName) throws SQLException {
 

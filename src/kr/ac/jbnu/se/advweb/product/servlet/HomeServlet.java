@@ -8,6 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import kr.ac.jbnu.se.advweb.product.model.UserAccount;
+import kr.ac.jbnu.se.advweb.product.utils.MyUtils;
 
 @WebServlet(urlPatterns = { "/home" })
 public class HomeServlet extends HttpServlet {
@@ -20,12 +24,11 @@ public class HomeServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		// Forward to /WEB-INF/views/homeView.jsp
 		// (Users can not access directly into JSP pages placed in WEB-INF)
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/homeView.jsp");
 		dispatcher.forward(request, response);
-
 	}
 
 	@Override
