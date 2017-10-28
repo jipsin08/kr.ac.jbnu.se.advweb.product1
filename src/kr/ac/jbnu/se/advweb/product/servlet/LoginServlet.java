@@ -51,10 +51,44 @@ public class LoginServlet extends HttpServlet {
 		UserAccount user = null;
 		boolean hasError = false;
 		String errorString = null;
-
-		if (userName == null || password == null || userName.length() == 0 || password.length() == 0) {
+		
+		if (password.contains("!")==false & password.contains("~") == false & password.contains("@") == false & password.contains("#") == false & //
+				password.contains("$") == false & password.contains("%") == false & password.contains("^") == false & password.contains("&") == false & //
+				password.contains("*") == false & password.contains("-") == false & password.contains("=") == false & password.contains(".") == false & //
+				password.contains("'") == false & password.contains(";") == false) {
+			System.out.println("특수문자 포함하시오.");
 			hasError = true;
-			errorString = "Required username and password!";
+			errorString = "Typing valid value on username, also password as well.";
+		}
+		
+//		if (password.contains("A")==false & password.contains("B") == false & password.contains("C") == false & password.contains("D") == false & //
+//				password.contains("E") == false & password.contains("F") == false & password.contains("G") == false & password.contains("H") == false & //
+//				password.contains("I") == false & password.contains("J") == false & password.contains("K") == false & password.contains("L") == false & //
+//				password.contains("M") == false & password.contains("N") == false & password.contains("O") == false & password.contains("P") == false & //
+//				password.contains("Q") == false & password.contains("R") == false & password.contains("S") == false & password.contains("T") == false & //
+//				password.contains("U") == false & password.contains("V") == false & password.contains("W") == false & password.contains("X") == false & //
+//				password.contains("Y") == false & password.contains("Z") == false){
+//			hasError = true;
+//			errorString = "Typing valid value on username, also password as well.";
+//		}
+		
+		if(password.matches(".*[A-Z].*")==false) {
+			System.out.println("대문자 포함하시오.");
+			hasError = true;
+			errorString = "Typing valid value on username, also password as well.";
+		}
+		
+		if(password.matches(".*[0-9].*")==false) {
+			System.out.println("숫자 포함하시오.");
+			hasError = true;
+			errorString = "Typing valid value on username, also password as well.";
+		}
+		
+		
+
+		if (userName == null || password == null || userName.length() == 0 || password.length() == 0 || password.length() < 8) {
+			hasError = true;
+			errorString = "Typing valid value on username, also password as well.";
 		} else {
 			Connection conn = MyUtils.getStoredConnection(request);
 			try {
