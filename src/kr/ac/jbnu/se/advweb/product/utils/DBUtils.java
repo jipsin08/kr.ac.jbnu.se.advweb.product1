@@ -181,5 +181,18 @@ public class DBUtils {
 
 		pstm.executeUpdate();
 	}
+	
+	// Check newest created user account will occur PRIMARY KEY Collapse Error.
+	public static void checkAccount(Connection conn, UserAccount useraccount) throws SQLException {
+		
+		String sql = "Select a.User_Name, a.Password, a.Gender from User_Account a " //
+				+ " where a.User_Name = ?";
+		
+		// 회원가입할 때 어떤 값을 입력 받을 지에 따라 추가하여 사용할 수 잇다.
+		String username = useraccount.getUserName();
+		
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		pstm.setString(1, username);
+	}
 
 }

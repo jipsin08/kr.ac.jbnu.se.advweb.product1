@@ -1,9 +1,11 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	 	<title>회원 관리</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ 	<title>회원 관리</title>
+ 	<link type="text/css" rel="stylesheet" href="<c:url value="/css/validation.css" />" media="screen"/>
 </head>
 
 
@@ -48,8 +50,12 @@ function sendIt() {
 
  
 <body>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="<c:url value="/js/validation.js" />"></script>   
 	 <div>
 	   <h1>회원 관리</h1>
+      <p style="color: red;">${errorString}</p>
 	   <hr>
 	 </div>
 	   <br>
@@ -58,42 +64,37 @@ function sendIt() {
 			<table border="0">
 				<tr>
 					<td>USER_NAME</td>
-					<td><input type="text" name="userName" value="${useraccount.userName}" /></td>
+					<td><input type="text" name="userName" class="form-control" value="${useraccount.userName}" /></td>
 				</tr>
 				<tr>
 					<td>PASSWORD</td>
-					<td><input type="text" name="password" value="${useraccount.password}" /></td>
+					<td><input type="password" name="password" class="form-control" value="${useraccount.password}" /></td>
 				</tr>
 				
 				<tr>
-					<td colspan="1"><input type="submit" value="완료" onclick="sendIt()"/><a href="login">취소</a></td>
+					<td colspan="1"><input type="submit" value="완료" class="form-control" onclick="sendIt()"/><a href="login">취소</a></td>
 				</tr>
 			</table>
 		</form>
 		
-		<div class="col-md-4">
-            <div class="aro-pswd_info">
-               <div id="pswd_info">
-                  <h4>ID must be requirements</h4>
-                  <ul>
-                     <li id="letter" class="invalid">You can only use <strong>English for ID content.</strong></li>
-                  </ul>
-               </div>
-            </div>
-         </div>
-		<div class="col-md-4">
-            <div class="aro-pswd_info">
-               <div id="pswd_info">
-                  <h4>Password must be requirements</h4>
-                  <ul>
-                     <li id="letter" class="invalid">At least <strong>one letter</strong></li>
-                     <li id="capital" class="invalid">At least <strong>one capital letter</strong></li>
-                     <li id="number" class="invalid">At least <strong>one number</strong></li>
-                     <li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
-                     <li id="space" class="invalid">be<strong> use [~,!,@,#,$,%,^,&,*,-,=,.,;,']</strong></li>
-                  </ul>
-               </div>
-            </div>
+		<b>You can use <strong>English only for ID content.</strong></b>
+		<div class = "container">
+			<div class = "row">
+				<div class="col-md-4">
+            		<div class="aro-pswd_info">
+               			<div id="pswd_info">
+                  			<h4>Password must be requirements</h4>
+                  			<ul>
+                     			<li id="letter" class="invalid">At least <strong>one letter</strong></li>
+                     			<li id="capital" class="invalid">At least <strong>one capital letter</strong></li>
+                     			<li id="number" class="invalid">At least <strong>one number</strong></li>
+                     			<li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
+                   				<li id="space" class="invalid">be<strong> use [~,!,@,#,$,%,^,&,*,-,=,.,;,']</strong></li>
+                  			</ul>
+               			</div>
+            		</div>
+         		</div>
+         	</div>
          </div> 
 		<jsp:include page="_footer.jsp"></jsp:include>
 </body>

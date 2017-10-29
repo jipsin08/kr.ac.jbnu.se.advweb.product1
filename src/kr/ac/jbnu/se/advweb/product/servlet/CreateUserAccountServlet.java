@@ -57,12 +57,35 @@ public class CreateUserAccountServlet extends HttpServlet {
 		
 		String errorString = null;
 		
-		String regex = "\\w+";
+		// 호홀 에러가 나서 지웟습니다. 바로 아래 코드랑 같은거여요.
+//		String regex = "\\w+";
+//		
+//		if (userName == null || !userName.matches(regex)) {
+//			errorString = "UserAccount Code invalid!";
+//		}else if (password == null || !password.matches(regex)) {
+//			errorString = "UserAccount Code invalid!";
+//		}
 		
-		if (userName == null || !userName.matches(regex)) {
+		if (userName == null || password == null) {
 			errorString = "UserAccount Code invalid!";
-		}else if (password == null || !password.matches(regex)) {
-			errorString = "UserAccount Code invalid!";
+		}
+		
+		if (password.contains("!")==false & password.contains("~") == false & password.contains("@") == false & password.contains("#") == false & //
+				password.contains("$") == false & password.contains("%") == false & password.contains("^") == false & password.contains("&") == false & //
+				password.contains("*") == false & password.contains("-") == false & password.contains("=") == false & password.contains(".") == false & //
+				password.contains("'") == false & password.contains(";") == false) {
+			System.out.println("특수문자 포함하시오.");
+			errorString = "Error!! Follow the Constraint";
+		}
+		
+		if(password.matches(".*[A-Z].*")==false) {
+			System.out.println("대문자 포함하시오.");
+			errorString = "Error!! Follow the Constraint";
+		}
+		
+		if(password.matches(".*[0-9].*")==false) {
+			System.out.println("숫자 포함하시오.");
+			errorString = "Error!! Follow the Constraint";
 		}
 		
 		if (errorString == null) {
