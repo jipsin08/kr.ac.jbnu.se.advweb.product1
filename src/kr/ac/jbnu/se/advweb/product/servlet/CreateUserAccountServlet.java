@@ -52,8 +52,12 @@ public class CreateUserAccountServlet extends HttpServlet {
 		
 		String userName = (String) request.getParameter("userName");
 		String password = (String) request.getParameter("password");
+		String nickName = (String) request.getParameter("nickName");
+		String gender = (String) request.getParameter("gender");
+		String emailAddress = (String) request.getParameter("emailAddress");
+		String answer = (String) request.getParameter("answer");
 		
-		UserAccount useraccount = new UserAccount(userName, password);
+		UserAccount useraccount = new UserAccount(userName, emailAddress, nickName, gender, password, answer);
 		
 		String errorString = null;
 		
@@ -66,39 +70,55 @@ public class CreateUserAccountServlet extends HttpServlet {
 //			errorString = "UserAccount Code invalid!";
 //		}
 		
-		if (userName == null || password == null) {
-			errorString = "UserAccount Code invalid!";
-		}
 		
-		if (password.contains("!")==false & password.contains("~") == false & password.contains("@") == false & password.contains("#") == false & //
-				password.contains("$") == false & password.contains("%") == false & password.contains("^") == false & password.contains("&") == false & //
-				password.contains("*") == false & password.contains("-") == false & password.contains("=") == false & password.contains(".") == false & //
-				password.contains("'") == false & password.contains(";") == false) {
+		if (userName == null || password == null || emailAddress == null || nickName == null || gender == null || answer == null) {
+			errorString = "UserAccount Code invalid!";
+		}else if 
+		   (password.contains("!")==false & password.contains("~") == false & password.contains("@") == false & password.contains("#") == false & //
+			password.contains("$") == false & password.contains("%") == false & password.contains("^") == false & password.contains("&") == false & //
+			password.contains("*") == false & password.contains("-") == false & password.contains("=") == false & password.contains(".") == false & //
+			password.contains("'") == false & password.contains(";") == false) {
 			System.out.println("특수문자 포함하시오.");
 			errorString = "Error!! Follow the Constraint";
-		}
-		
-		if(password.matches(".*[A-Z].*")==false) {
+		}else if
+		(password.matches(".*[A-Z].*")==false) {
 			System.out.println("대문자 포함하시오.");
 			errorString = "Error!! Follow the Constraint";
-		}
-		
-		if(password.matches(".*[0-9].*")==false) {
+		}else if
+		(password.matches(".*[0-9].*")==false) {
 			System.out.println("숫자 포함하시오.");
 			errorString = "Error!! Follow the Constraint";
 		}
 		
-		if (errorString == null) {
-			try {
-				DBUtils.insertUser(conn, useraccount);
-			} catch (SQLException e) {
-				e.printStackTrace();
-				errorString = e.getMessage();
+		
+		// try to figure out does that user account already exist in DB. so that prevent DB Error.
+		try {
+			UserAccount isExist = DBUtils.checkAccount(conn, useraccount);
+			
+			if (isExist == null) {
+				System.out.println("DB에 존재 안한답니다.");
+				try {
+					DBUtils.insertUser(conn, useraccount);
+				} catch (SQLException e) {
+					e.printStackTrace();
+					errorString = e.getMessage();
+				}
 			}
+			else{
+				// duplicate user name is exist in DB already.
+				System.out.println("DB에 존재 한답니다.");
+				errorString = "Same User_Name is already exists in Database!!";
+			}
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-		// Store infomation to request attribute, before forward to views.
-		request.setAttribute("errorString", errorString);
-		request.setAttribute("useraccount", useraccount);
+		
+		// Store information to request attribute, before forward to views.
+			request.setAttribute("errorString", errorString);
+			request.setAttribute("useraccount", useraccount);
+		
 		
 		// If error, forward to Edit page.
 		if (errorString != null) {

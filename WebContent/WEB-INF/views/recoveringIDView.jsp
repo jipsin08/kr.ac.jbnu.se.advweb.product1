@@ -14,7 +14,9 @@
 				$.post('${pageContext.request.contextPath}/recoveringID', 
 					{
 						password : $("#passwd_id").val(),
-						gender : $("#gender_id").val()
+						gender : $("#gender_id").val(),
+						answer : $("#answer_id").val(),
+						emailAddress : $("#emailaddress_id").val()
 					},function(data) 
 						{
 							// move another page
@@ -50,13 +52,30 @@
 	
 		<form id="recovering_username_id" method="POST">
          	<table border="0">
+                <tr>
+               		<td>Email_Address</td>
+               		<td><input type="text" id = "emailaddress_id" name="emailAddress" value= "${user.emailAddress}" /> </td>
+                </tr>
+                
+<!--                 seems like don't need that condition. -->
+<!--                 <tr> -->
+<!--                		<td>NickName</td> -->
+<%--                		<td><input type="text" id = "nickname_id" name="nickName" value= "${user.nickName}" /> </td> --%>
+<!--                 </tr> -->
             	<tr>
                		<td>Password</td>
-               		<td><input type="text" id = "passwd_id" name="password" value= "${user.password}" /> </td>
+               		<td><input type="password" id = "passwd_id" name="password" value= "${user.password}" /> </td>
                 </tr>
                 <tr>
                		<td>Gender</td>
                		<td><input type="text" id = "gender_id" name="gender" value= "${user.gender}" /> </td>
+                </tr>
+                <tr>
+					<td>[ hint question is ]<em>What's your favorite Football Club in the world?</em></td>
+				</tr>
+                <tr>
+               		<td>Answer</td>
+               		<td><input type="text" id = "answer_id" name="answer" value= "${user.answer}" /> </td>
                 </tr>
 				<tr>
 					<td><strong><p style="color: red;">${errorString}</p></strong></td>
