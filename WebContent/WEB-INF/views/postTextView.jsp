@@ -6,7 +6,12 @@
 		<meta charset="utf-8">
 		<title>postText</title>
 		
-		<script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
+		<script type="text/javascript" src="./ckeditor/ckeditor.js">
+		function button1_click() {
+			alert("내용 비우기.");
+			CKEDITOR.instances.postEditor.setData('')
+		}
+		</script>
 		
 	</head>
 	<body>
