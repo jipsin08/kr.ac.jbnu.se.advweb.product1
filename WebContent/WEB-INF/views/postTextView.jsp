@@ -4,12 +4,9 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>CKEditor</title>
-		<script type="text/javascript" src="https://cdn.ckeditor.com/ckeditor5/1.0.0-alpha.1/classic/ckeditor.js">
+		<title>postText</title>
 		
-        function clearFrm() {document.frame.reset();}
-		
-			
+		<script src="https://cdn.ckeditor.com/4.7.3/basic/ckeditor.js">
 		</script>
 		
 	</head>
@@ -20,14 +17,10 @@
     	
     	<form name="frame" method="post" action="posting_test.jsp">
     	
-			<textarea name="content" id="editor" rows="10">왜 안되냐고ㅠㅠㅠ</textarea>
-			
-			<script>
-				ClassicEditor.create( document.querySelector( '#editor' ) );
-			</script>
+			<textarea name="contents" id="inputPost" class="ckeditor"></textarea>
 			
 			<input type="submit" value= "post" />
-			<input type="reset" value= "clear2" />
+			<input type="reset" value= "clear" />
 			
 		</form>
 	</body>
