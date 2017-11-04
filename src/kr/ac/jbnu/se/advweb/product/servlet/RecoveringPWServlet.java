@@ -49,23 +49,26 @@ public class RecoveringPWServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 				String username = request.getParameter("userName");
 				String gender = request.getParameter("gender");
+				String emailAddress = request.getParameter("emailAddress");
+				String answer = request.getParameter("answer");
 				
 				UserAccount user = null;
 				boolean hasError = false;
 				String errorString = null;
 
-				if (gender == null || username == null || gender.length() == 0 || username.length() == 0) {
+				if (gender == null || username == null || gender.length() == 0 || username.length() == 0
+						|| emailAddress == null || emailAddress.length() == 0 || answer == null || answer.length() == 0) {
 					hasError = true;
-					errorString = "Required username and password!";
+					errorString = "Please insert proper value for it.";
 				} else {
 					Connection conn = MyUtils.getStoredConnection(request);
 					try {
 						// Find the user in the DB.
-						user = DBUtils.recoveringPW(conn, gender, username);
+						user = DBUtils.recoveringPW(conn, gender, username, emailAddress, answer);
 
 						if (user == null) {
 							hasError = true;
-							errorString = "your information is invalid";
+							errorString = "Inserted information is somewhat invalid";
 						}
 					} catch (SQLException e) {
 						e.printStackTrace();

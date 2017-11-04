@@ -15,7 +15,7 @@ public class DBUtils {
 	public static UserAccount findUser(Connection conn, //
 			String userName, String password) throws SQLException {
 
-		String sql = "Select a.User_Name, a.Password, a.Gender from User_Account a " //
+		String sql = "Select a.User_Name, a.Password, a.Gender, a.NickName, a.Answer, a.Email_Address from User_Account a " //
 				+ " where a.User_Name = ? and a.password= ?";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
@@ -25,24 +25,32 @@ public class DBUtils {
 
 		if (rs.next()) {
 			String gender = rs.getString("Gender");
+			String nickname = rs.getString("NickName");
+			String answer = rs.getString("Answer");
+			String emailAddress = rs.getString("Email_Address");
 			UserAccount user = new UserAccount();
 			user.setUserName(userName);
 			user.setPassword(password);
 			user.setGender(gender);
+			user.setNickName(nickname);
+			user.setAnswer(answer);
+			user.setEmailAddress(emailAddress);
 			return user;
 		}
 		return null;
 	}
 	
 	public static UserAccount recoveringID(Connection conn, //
-			String gender, String password) throws SQLException {
+			String gender, String password, String emailAddress, String answer) throws SQLException {
 		
-		String sql = "Select a.User_Name, a.Password, a.Gender from User_Account a " //
-				+ " where a.Gender = ? and a.password= ?";
+		String sql = "Select a.User_Name from User_Account a " //
+				+ " where a.Gender = ? and a.password= ? and a.Email_Address = ? and a.answer = ?";
 		
 		PreparedStatement pstm = conn.prepareStatement(sql);
 		pstm.setString(1, gender);
 		pstm.setString(2, password);
+		pstm.setString(3, emailAddress);
+		pstm.setString(4, answer);
 		ResultSet rs = pstm.executeQuery();
 		
 		if (rs.next()) {
@@ -51,20 +59,24 @@ public class DBUtils {
 			user.setUserName(userName);
 			user.setPassword(password);
 			user.setGender(gender);
+			user.setEmailAddress(emailAddress);
+			user.setAnswer(answer);
 			return user;
 		}
 		return null;
 	}
 	
 	public static UserAccount recoveringPW(Connection conn, //
-			String gender, String username) throws SQLException {
+			String gender, String username, String emailAddress, String answer) throws SQLException {
 		
-		String sql = "Select a.User_Name, a.Password, a.Gender from User_Account a " //
-				+ " where a.Gender = ? and a.User_Name= ?";
+		String sql = "Select a.Password from User_Account a " //
+				+ " where a.Gender = ? and a.User_Name= ? and a.Email_Address= ? and a.Answer= ?";
 		
 		PreparedStatement pstm = conn.prepareStatement(sql);
 		pstm.setString(1, gender);
 		pstm.setString(2, username);
+		pstm.setString(3, emailAddress);
+		pstm.setString(4, answer);
 		ResultSet rs = pstm.executeQuery();
 		
 		if (rs.next()) {
@@ -73,10 +85,35 @@ public class DBUtils {
 			user.setUserName(username);
 			user.setPassword(password);
 			user.setGender(gender);
+			user.setEmailAddress(emailAddress);
+			user.setAnswer(answer);
 			return user;
 		}
 		return null;
 	}	
+	
+//	public static boolean IsExist(Connection conn, String username, String emailAddress //
+//			, String nickname, String gender, String password, String answer) throws SQLException {
+//		
+//		String sql = "Select * from User_Account a" //
+//				+ "where a.User_Name = ? and a.Email_Address =? and a.NickName =? and a.Gender =?" //
+//				+ "and a.Password =? and a.Answer =?";
+//		
+//		PreparedStatement pstm = conn.prepareStatement(sql);
+//		
+//		pstm.setString(1, username);
+//		pstm.setString(2, emailAddress);
+//		pstm.setString(3, nickname);
+//		pstm.setString(4, gender);
+//		pstm.setString(5, password);
+//		pstm.setString(6, answer);
+//		ResultSet rs = pstm.executeQuery();
+//		
+//		if (rs.next()) {
+//			return true;
+//		}
+//		return false;
+//	}
 
 	public static UserAccount findUser(Connection conn, String userName) throws SQLException {
 
@@ -161,13 +198,16 @@ public class DBUtils {
 	}
 	
 	public static void insertUser(Connection conn, UserAccount useraccount) throws SQLException {
-		String sql = "Insert into USER_ACCOUNT(USER_NAME, GENDER,PASSWORD) values (?,?,?)";
+		String sql = "Insert into USER_ACCOUNT(USER_NAME, EMAIL_ADDRESS, NICKNAME, GENDER, PASSWORD, ANSWER) values (?,?,?,?,?,?)";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
 		
 		pstm.setString(1, useraccount.getUserName());
-		pstm.setString(2, "M");
-		pstm.setString(3, useraccount.getPassword());
+		pstm.setString(2, useraccount.getEmailAddress());
+		pstm.setString(3, useraccount.getNickName());
+		pstm.setString(4, useraccount.getGender());
+		pstm.setString(5, useraccount.getPassword());
+		pstm.setString(6, useraccount.getAnswer());
 
 		pstm.executeUpdate();
 	}
@@ -182,17 +222,51 @@ public class DBUtils {
 		pstm.executeUpdate();
 	}
 	
-	// Check newest created user account will occur PRIMARY KEY Collapse Error.
-	public static void checkAccount(Connection conn, UserAccount useraccount) throws SQLException {
+	// Comparing already existed account's user_name with Inserted user name value from registrationView.
+	public static UserAccount checkAccount(Connection conn, UserAccount useraccount) throws SQLException {
 		
-		String sql = "Select a.User_Name, a.Password, a.Gender from User_Account a " //
+		String sql = "Select a.User_Name, a.Email_Address, a.NickName, a.Gender, a.Password, a.Answer from User_Account a "//
 				+ " where a.User_Name = ?";
 		
-		// 회원가입할 때 어떤 값을 입력 받을 지에 따라 추가하여 사용할 수 잇다.
+		// �쉶�썝媛��엯�븷 �븣 �뼱�뼡 媛믪쓣 �엯�젰 諛쏆쓣 吏��뿉 �뵲�씪 異붽��븯�뿬 �궗�슜�븷 �닔 �엲�떎.
 		String username = useraccount.getUserName();
+//		String emailAddress = useraccount.getEmailAddress();
+//		String nickname = useraccount.getNickName();
+//		String gender = useraccount.getGender();
+//		String password = useraccount.getPassword();
+//		String answer = useraccount.getAnswer();
 		
 		PreparedStatement pstm = conn.prepareStatement(sql);
 		pstm.setString(1, username);
+//		pstm.setString(2, emailAddress);
+//		pstm.setString(3, nickname);
+//		pstm.setString(4, gender);
+//		pstm.setString(5, password);
+//		pstm.setString(6, answer);
+		
+		ResultSet rs = pstm.executeQuery();
+		
+		if (rs.next()) {
+			
+			String rs_username = rs.getString("User_Name");
+			String rs_emailAddress = rs.getString("Email_Address");
+			String rs_nickname = rs.getString("NickName");
+			String rs_gender = rs.getString("Gender");
+			String rs_password = rs.getString("password");
+			String rs_answer = rs.getString("Answer");
+			
+			UserAccount user = new UserAccount();
+			
+			user.setUserName(rs_username);
+			user.setPassword(rs_password);
+			user.setGender(rs_gender);
+			user.setNickName(rs_nickname);
+			user.setEmailAddress(rs_emailAddress);
+			user.setAnswer(rs_answer);
+			// Confirming.
+			return user;
+		}
+		return null;
 	}
 
 }

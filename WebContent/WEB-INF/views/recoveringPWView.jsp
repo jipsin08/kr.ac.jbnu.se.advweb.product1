@@ -16,6 +16,8 @@
 					{
 						userName : $("#name_id").val(),
 						gender : $("#gender_id").val()
+						answer : $("#answer_id").val(),
+						emailAddress : $("#emailaddress_id").val()
 					},function(data) 
 						{
 							// move another page
@@ -54,13 +56,24 @@
 	<b>=====================================================</b>
 	<form id="recovering_pw_id" method="POST">
          	<table border="0">
+         		<tr>
+              	 	<td>Email Address</td>
+              	 	<td><input type="text" id = "emailaddress_id" name="emailAddress" value= "${user.emailAddress}" /> </td>
+                </tr>
             	<tr>
-              	 <td>User Name</td>
-              	 <td><input type="text" id = "name_id" name="userName" value= "${user.userName}" /> </td>
+              	 	<td>User Name</td>
+              	 	<td><input type="text" id = "name_id" name="userName" value= "${user.userName}" /> </td>
                 </tr>
                 <tr>
                		<td>Gender</td>
                		<td><input type="text" id = "gender_id" name="gender" value= "${user.gender}" /> </td>
+                </tr>
+                <tr>
+					<td>[ hint question is ]<em>What's your favorite Football Club in the world?</em></td>
+				</tr>
+                <tr>
+               		<td>Answer</td>
+               		<td><input type="text" id = "answer_id" name="answer" value= "${user.answer}" /> </td>
                 </tr>
                 <tr>
 					<td colspan="1"><input type="submit" value="확인"/></td>

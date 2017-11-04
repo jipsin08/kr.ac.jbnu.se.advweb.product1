@@ -6,17 +6,25 @@ public class UserAccount {
 	public static final String GENDER_FEMALE = "F";
 
 	private String userName;
+	private String emailAddress;
+	private String nickName;
 	private String gender;
 	private String password;
+	private String answer;
+//	private String interest;
 	
 	public UserAccount(){
 		
 	}
 
-	//È¸¿ø°¡ÀÔ ¶§ ÀÌ¿ëÇÒ »ý¼ºÀÚ
-	public UserAccount(String userName, String password) {
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public UserAccount(String userName, String emailAddress, String nickName, String gender, String password, String answer) {
 		this.userName = userName;
+		this.emailAddress = emailAddress;
+		this.nickName = nickName;
+		this.gender = gender;
 		this.password = password;
+		this.answer = answer;
 	}
 	
 	public String getUserName() {
@@ -25,6 +33,22 @@ public class UserAccount {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+	
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public String getGender() {
@@ -42,5 +66,22 @@ public class UserAccount {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	
+	// just in case for adopting as a flag of user's interests, like Hash Tag #
+//	public String getInterest() {
+//		return interest;
+//	}
+//
+//	public void setInterest(String interest) {
+//		this.interest = interest;
+//	}
 
 }

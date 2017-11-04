@@ -43,6 +43,57 @@ function sendIt() {
             return;
         }
       f.password.value = str;
+
+      var sample = document.getElementById('gender');
+
+      for(var i=0; i<sample.length; i++){
+			if(sample[i].checked == true){
+				str = sample[i].value;
+				str = str.trim();
+		        if(!str) {
+		            alert("\n성별을 입력하세요. ");
+		            f.gender.focus();
+		            return;
+		        }
+		        f.gender.value = str;
+			}
+          }
+
+//       str = f.gender.value;
+//       str = str.trim();
+//         if(!str) {
+//             alert("\n성별을 입력하세요. ");
+//             f.gender.focus();
+//             return;
+//         }
+//       f.gender.value = str;
+
+      str = f.nickName.value;
+      str = str.trim();
+        if(!str) {
+            alert("\n닉네임을 입력하세요. ");
+            f.nickName.focus();
+            return;
+        }
+      f.nickName.value = str;
+
+      str = f.emailAddress.value;
+      str = str.trim();
+        if(!str) {
+            alert("\n이메일 주소를 입력하세요. ");
+            f.emailAddress.focus();
+            return;
+        }
+      f.emailAddress.value = str;
+
+      str = f.answer.value;
+      str = str.trim();
+        if(!str) {
+            alert("\n문제에 대한 답변 입력하세요. ");
+            f.answer.focus();
+            return;
+        }
+      f.answer.value = str;
     }
     
 </script>
@@ -63,14 +114,62 @@ function sendIt() {
 			action="${pageContext.request.contextPath}/createUserAccount">
 			<table border="0">
 				<tr>
-					<td>USER_NAME</td>
+					<td>USER_NAME =></td>
 					<td><input type="text" name="userName" class="form-control" value="${useraccount.userName}" /></td>
 				</tr>
 				<tr>
-					<td>PASSWORD</td>
-					<td><input type="password" name="password" class="form-control" value="${useraccount.password}" /></td>
+					<td><strong>===========</strong></td>
+				</tr>
+				<tr>
+					<td>Email_Address =></td>
+					<td><input type="text" name="emailAddress" class="form-control" value="${useraccount.emailAddress}" /></td>
+				</tr>
+				<tr>
+					<td><strong>===========</strong></td>
+				</tr>
+				<tr>
+					<td>NICKNAME =></td>
+					<td><input type="text" name="nickName" class="form-control" value="${useraccount.nickName}" /></td>
+				</tr>
+				<tr>
+					<td><strong>===========</strong></td>
 				</tr>
 				
+                <!-- **!!this gender attribute should be checked by radio button -->
+				<tr>
+					<td>GENDER =></td>
+<%-- 					<td><input type="text" name="gender" class="form-control" value="${useraccount.gender}" /></td> --%>
+					<td>
+<!--   							<p>Please select your preferred contact method:</p> -->
+  							<div>
+   							 	<input type="radio" id="genderChoice1" name="gender" class="form-control" value="M"/>
+    							<label for="genderChoice1">M</label>
+
+    							<input type="radio" id="genderChoice2" name="gender" class="form-control" value="F"/>
+    							<label for="genderChoice2">F</label>
+
+    							<input type="radio" id="genderChoice3" name="gender" class="form-control" value="X"/>
+    							<label for="genderChoice3">X</label>
+  							</div>
+					</td>
+				</tr>
+				<tr>
+					<td><strong>===========</strong></td>
+				</tr>
+				<tr>
+					<td>PASSWORD =></td>
+					<td><input type="password" name="password" class="form-control" value="${useraccount.password}" /></td>
+				</tr>
+				<tr>
+					<td><strong>===========</strong></td>
+				</tr>
+				<tr>
+					<td><em>What's your favorite Football Club in the world?</em></td>
+				</tr>
+				<tr>
+					<td>ANSWER =></td>
+					<td><input type="text" name="answer" class="form-control" value="${useraccount.answer}" /></td>
+				</tr>
 				<tr>
 					<td colspan="1"><input type="submit" value="완료" class="form-control" onclick="sendIt()"/><a href="login">취소</a></td>
 				</tr>
