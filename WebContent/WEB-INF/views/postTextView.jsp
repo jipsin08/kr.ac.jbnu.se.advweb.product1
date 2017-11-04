@@ -5,34 +5,54 @@
 	<head>
 		<meta charset="utf-8">
 		<title>postText</title>
-		
-		<script type="text/javascript" src="./ckeditor/ckeditor.js">
-		function button1_click() {
-			alert("내용 비우기.");
-			CKEDITOR.instances.postEditor.setData('')
-		}
-		</script>
-		
-	</head>
-	<body>
+		<!-- ckEditor -->
+		<script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
 	    <!-- editor 창 clear 이벤트 -->
 		<script>
 			function button1_click() {
 				alert("내용 비우기.");
-				CKEDITOR.instances.postEditor.setData('')
+				CKEDITOR.instances.postEditor.setData('');
+			}
+			
+			function inputCkData() {
+				var ckData = CKEDITOR.instances.postEditor.getData();
+
 			}
 		</script>
-	
+	</head>
+	<body>
+
 		<jsp:include page="_header.jsp"></jsp:include>
     	<jsp:include page="_menu.jsp"></jsp:include>
     	
-    	<form name="frame" method="post" action="posting_test.jsp">
-    	
-    		<!-- id 값은 꼭 넣어주기 -->
-			<textarea id="postEditor" class="ckeditor"></textarea>
-			
-			<input type="submit" value= "post" />
-			<input type="button" value="clear" id="button1" onclick="button1_click();"  />
+    	<form method="post" action="${pageContext.request.contextPath}/postText">
+    	    <table>
+				<tr	align="center" valign="middle">
+					<td>
+                		<input type="text" name="postSub" size="70" maxlength="100" value="${postboard.postSub}"/>
+            		</td>        
+       			</tr>
+		        <tr align="center" valign="middle">
+		            <td>
+		            	<textarea id="postEditor" class="ckeditor"></textarea>
+		            	<!-- ckEditor 값은 CKEDITOR.instances.postEditor.getData()으로 얻어옴 -->
+		            	<input type="text" name="postCont" class ="postCont" value="${postboard.postCont}">
+		            </td>        
+		        </tr>
+        
+<!-- 		        <tr>
+		            <td>
+		                <input type="file" name="board_file" />
+		            </td>    
+		        </tr> -->
+ 
+		        <tr align="center" valign="middle">
+		            <td>
+						<input type="submit" value= "post" onclick="inputCkData();"/>
+						<input type="button" value="clear" id="button1" onclick="button1_click();"  />          
+		            </td>
+		        </tr>
+    </table>
 			
 
 		</form>

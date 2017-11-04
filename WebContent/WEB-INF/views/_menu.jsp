@@ -7,6 +7,6 @@
    ||
    <a href="${pageContext.request.contextPath}/createUserAccount">Registration</a>
    ||
-   <a href="${pageContext.request.contextPath}/post">Post</a>
+   <a href="${pageContext.request.contextPath}/postmain">Post</a>
    ||
 </div> 

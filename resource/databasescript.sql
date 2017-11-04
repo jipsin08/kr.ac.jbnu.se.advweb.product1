@@ -21,16 +21,17 @@ primary key (USER_CODE)
 );
 
 
--- 게시물 번호, 작성자 ID, 작성자 닉네임, 제목, 내용, 날짜
+-- 게시물 번호, 작성자 ID, 작성자 닉네임, 제목, 내용, 날짜, 게시물 공개여부
 
-create table USER_BOARD
+create table POST_BOARD
 (
 post_num int not null AUTO_INCREMENT primary key,
 post_id varchar(30),
 post_nickname varchar(30),
 post_subject varchar(200),
 post_content varchar(5000),
-post_date DATETIME
+post_date DATETIME,
+post_visible int not null
 );
  
 
@@ -45,8 +46,11 @@ primary key (CODE)
 
 -- Insert data: ---------------------------------------------------------------
 
-INSERT INTO USER_BOARD(post_id, post_nickname, post_subject, post_content, post_date)
-VALUES ('hanzo', 'hanzo', 'textSub', 'textCont', sysdate()); 
+INSERT INTO POST_BOARD(post_id, post_nickname, post_subject, post_content, post_date, post_visible)
+VALUES ('hanzo', 'hanzo', 'textSub', 'textCont', sysdate(), 1); 
+
+INSERT INTO POST_BOARD(post_id, post_nickname, post_subject, post_content, post_date, post_visible)
+VALUES ('genji', 'genji', 'textSub', 'textCont', sysdate(), 0); 
 
 
 insert into user_account (USER_NAME, EMAIL_ADDRESS, NICKNAME, GENDER, PASSWORD, ANSWER)

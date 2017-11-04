@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.ac.jbnu.se.advweb.product.model.PostBoard;
 import kr.ac.jbnu.se.advweb.product.model.Product;
 import kr.ac.jbnu.se.advweb.product.model.UserAccount;
 
@@ -153,9 +154,15 @@ public class DBUtils {
 			product.setName(name);
 			product.setPrice(price);
 			list.add(product);
+			
+			//정상
+			//System.out.println(product.getName());
 		}
+		//System.out.println("id : "+ list.get(0) + "id : " +list.get(1));
 		return list;
 	}
+	
+
 
 	public static Product findProduct(Connection conn, String code) throws SQLException {
 		String sql = "Select a.Code, a.Name, a.Price from Product a where a.Code=?";
@@ -268,5 +275,76 @@ public class DBUtils {
 		}
 		return null;
 	}
+	
+	//
+	//PostBoard
+	//
+	
+	//DB에서 뽑아오기
+	public static List<PostBoard> queryPost(Connection conn) throws SQLException {
+		String sql = "Select a.post_num, a.post_id, a.post_nickname, a.post_subject, a.post_content, a.post_date, a.post_visible"
+				+ " from post_board a ";
+
+		PreparedStatement pstm = conn.prepareStatement(sql);
+
+		ResultSet rs = pstm.executeQuery();
+		List<PostBoard> list = new ArrayList<PostBoard>();
+		while (rs.next()) {
+			String postNum = rs.getString("post_num");
+			String postId = rs.getString("post_id");
+			String postNickname = rs.getString("post_nickname");
+			String postSubject = rs.getString("post_subject");
+			String postContent = rs.getString("post_content");
+			String postDate = rs.getString("post_date");
+			//String postVisible = rs.getString("post_visible");
+			PostBoard postboard = new PostBoard();
+			postboard.setPostNum(postNum);
+			postboard.setPostId(postId);		
+			postboard.setPostNickname(postNickname);
+			postboard.setPostSubject(postSubject);
+			postboard.setPostContent(postContent);
+			postboard.setPostDate(postDate);			
+			list.add(postboard);
+
+			//Null NUll 한 값 해결
+			//System.out.println(postboard.getPostDate() + postboard.getPostNickname());
+			
+		}
+		//System.out.println("id : "+ list.get(0) + "id : " +list.get(2));
+		return list;
+		
+		
+		
+	}
+
+	// DB에 구겨 넣기
+	/*
+	 * 
+	public static void insertPost(Connection conn, PostBoard postboard) throws SQLException {
+		String sql = "Insert into Product(post_num, post_id, post_nickname, post_subject, post_content, post_date) "
+				+ "values (?,?,?,?,?,sysdate(),?)";
+	
+	*/
+		
+		public static void insertPost(Connection conn, PostBoard postboard) throws SQLException {
+			String sql = "Insert into post_board(post_id, post_nickname, post_subject, post_content, post_date, post_visible) "
+					+ "values ('test','test',?,?,sysdate(),0)";
+
+		PreparedStatement pstm = conn.prepareStatement(sql);
+			
+		//그냥 써도 null 값 들어가서 오류 안날거 같긴한데
+/*		pstm.setString(1, postboard.getPostNum());
+		pstm.setString(2, postboard.getPostId());
+		pstm.setString(3, postboard.getPostNickname());
+		pstm.setString(4, postboard.getPostSubject());
+		pstm.setString(5, postboard.getPostContent());
+*/
+		//제목 내용만 테스트
+		pstm.setString(1, postboard.getPostSubject());
+		pstm.setString(2, postboard.getPostContent());
+
+		pstm.executeUpdate();
+	}
+	
 
 }

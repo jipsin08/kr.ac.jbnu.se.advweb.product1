@@ -3,6 +3,7 @@ package kr.ac.jbnu.se.advweb.product.servlet;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,14 +23,14 @@ import kr.ac.jbnu.se.advweb.product.utils.MyUtils;
  * @author tinyg
  *
  */
-@WebServlet(urlPatterns = { "/postText" })
-public class PostTextServlet extends HttpServlet {
+@WebServlet(urlPatterns = { "/postmain" })
+public class PostMainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostTextServlet() {
+    public PostMainServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,9 +41,25 @@ public class PostTextServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/postTextView.jsp");
+		Connection conn = MyUtils.getStoredConnection(request);
+		
+		String errorString = null;
+        List<PostBoard> list = null;
+        
+        try {
+            list = DBUtils.queryPost(conn);
+            //System.out.println("get0: "+ list.get(0) + "get2 : " +list.get(2));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            errorString = e.getMessage();
+        }
+		
+        request.setAttribute("errorString", errorString);
+        request.setAttribute("postList", list);
+		
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/postMainView.jsp");
 		dispatcher.forward(request, response);
-
+		
 	}
 
 	/**
@@ -51,34 +68,8 @@ public class PostTextServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-		
-		Connection conn = MyUtils.getStoredConnection(request);
-		
-		// 우선은 제목과 내용만
-		String postSub = (String) request.getParameter("postSub");
-		String postCont = (String) request.getParameter("postCont");
-		
-		PostBoard postboard = new PostBoard(postSub, postCont);
-		
-		//아직 에러처리 빼고
-		String errorString = null;
-		
-		try {
-			DBUtils.insertPost(conn, postboard);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			errorString = e.getMessage();
-		}
-		
-		request.setAttribute("errorString", errorString);
-		request.setAttribute("postboard", postboard);
-		//정상
-		System.out.println("getPostSubject() : "+postboard.getPostSubject());
-		//비정상
-		System.out.println("getPostContent() : "+postboard.getPostContent());
-		
-		response.sendRedirect(request.getContextPath() + "/postmain");
+		doGet(request, response);
+				
 	}
 
 }
