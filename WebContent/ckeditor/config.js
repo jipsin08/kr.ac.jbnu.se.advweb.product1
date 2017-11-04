@@ -38,8 +38,12 @@ CKEDITOR.editorConfig = function( config ) {
 	// Dialog windows are also simplified.
 	config.removeDialogTabs = 'link:advanced';
 
-	//±âÅ¸ ´Ù¸¥ ¼³Á¤ º¼°Å
+	//ëª‡ê°€ì§€ ìˆ˜ì •í•  ê²ƒ
+	
 	config.uiColor = '#F7B42C';
-	config.height = 300;
+	config.resize_minWidth = 200;
+	config.resize_maxWidth = 400;
+	config.resize_minHeight = 200;
+	config.resize_maxHeight = 400;
 	config.toolbarCanCollapse = true;
 };

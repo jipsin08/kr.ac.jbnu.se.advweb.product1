@@ -10,17 +10,26 @@
 		
 	</head>
 	<body>
+	    <!-- editor 창 clear 이벤트 -->
+		<script>
+			function button1_click() {
+				alert("내용 비우기.");
+				CKEDITOR.instances.postEditor.setData('')
+			}
+		</script>
 	
 		<jsp:include page="_header.jsp"></jsp:include>
     	<jsp:include page="_menu.jsp"></jsp:include>
     	
     	<form name="frame" method="post" action="posting_test.jsp">
     	
-			<textarea name="contents" id="inputPost" class="ckeditor"></textarea>
+    		<!-- id 값은 꼭 넣어주기 -->
+			<textarea id="postEditor" class="ckeditor"></textarea>
 			
 			<input type="submit" value= "post" />
-			<input type="reset" value= "clear2" />
+			<input type="button" value="clear" id="button1" onclick="button1_click();"  />
 			
+
 		</form>
 	</body>
 </html>
