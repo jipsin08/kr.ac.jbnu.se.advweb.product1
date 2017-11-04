@@ -6,8 +6,7 @@
 		<meta charset="utf-8">
 		<title>postText</title>
 		
-		<script src="https://cdn.ckeditor.com/4.7.3/basic/ckeditor.js">
-		</script>
+		<script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
 		
 	</head>
 	<body>
@@ -20,7 +19,7 @@
 			<textarea name="contents" id="inputPost" class="ckeditor"></textarea>
 			
 			<input type="submit" value= "post" />
-			<input type="reset" value= "clear" />
+			<input type="reset" value= "clear2" />
 			
 		</form>
 	</body>
