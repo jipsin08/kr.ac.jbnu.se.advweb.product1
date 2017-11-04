@@ -228,7 +228,7 @@ public class DBUtils {
 		String sql = "Select a.User_Name, a.Email_Address, a.NickName, a.Gender, a.Password, a.Answer from User_Account a "//
 				+ " where a.User_Name = ?";
 		
-		// 회원가입할 때 어떤 값을 입력 받을 지에 따라 추가하여 사용할 수 잇다.
+		// �쉶�썝媛��엯�븷 �븣 �뼱�뼡 媛믪쓣 �엯�젰 諛쏆쓣 吏��뿉 �뵲�씪 異붽��븯�뿬 �궗�슜�븷 �닔 �엲�떎.
 		String username = useraccount.getUserName();
 //		String emailAddress = useraccount.getEmailAddress();
 //		String nickname = useraccount.getNickName();

@@ -5,6 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <title>LoginedView</title>
+
+
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+	<script>
+		$(document).ready(function() {
+		});
+	
+		function showUserInfo()
+		{
+			$.get("${pageContext.request.contextPath}/userInfo", 
+				{
+					more : "Yes"
+				}, function(data) {
+				$('#additioalUserInfo').html(data);
+			});
+		}
+	</script>
+	
 </head>
 <body>
 
@@ -12,6 +30,9 @@
 	<jsp:include page="_menu_logined.jsp"></jsp:include>
 
 	<h3><strong>Title</strong></h3>
+	
+		<a href="javascript:void(0);" onclick="javascript:showUserInfo();">타인 검색</a>
+		<div id="additioalUserInfo"></div>
 
 	<em>This scene has a logined_user Attribute in it's request.</em> &amp; Jdbc.
 	<br>
