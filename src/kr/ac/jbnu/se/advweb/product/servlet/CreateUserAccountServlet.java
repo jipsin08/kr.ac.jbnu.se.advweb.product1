@@ -57,45 +57,44 @@ public class CreateUserAccountServlet extends HttpServlet {
 		String emailAddress = (String) request.getParameter("emailAddress");
 		String answer = (String) request.getParameter("answer");
 		
-		UserAccount useraccount = new UserAccount(userName, emailAddress, nickName, gender, password, answer);
-		
 		String errorString = null;
 		
-		// 호홀 에러가 나서 지웟습니다. 바로 아래 코드랑 같은거여요.
-//		String regex = "\\w+";
-//		
-//		if (userName == null || !userName.matches(regex)) {
-//			errorString = "UserAccount Code invalid!";
-//		}else if (password == null || !password.matches(regex)) {
-//			errorString = "UserAccount Code invalid!";
-//		}
-		
-		
-		if (userName == null || password == null || emailAddress == null || nickName == null || gender == null || answer == null) {
-			errorString = "UserAccount Code invalid!";
-		}else if 
-		   (password.contains("!")==false & password.contains("~") == false & password.contains("@") == false & password.contains("#") == false & //
+		//password Constraint [특수문자 포함]
+		if (password.contains("!")==false & password.contains("~") == false & password.contains("@") == false & password.contains("#") == false & //
 			password.contains("$") == false & password.contains("%") == false & password.contains("^") == false & password.contains("&") == false & //
 			password.contains("*") == false & password.contains("-") == false & password.contains("=") == false & password.contains(".") == false & //
 			password.contains("'") == false & password.contains(";") == false) {
 			System.out.println("특수문자 포함하시오.");
 			errorString = "Error!! Follow the Constraint";
-		}else if
-		(password.matches(".*[A-Z].*")==false) {
+			request.setAttribute("errorString", errorString);
+		}
+		//password Constraint [대문자 포함]
+		if (password.matches(".*[A-Z].*")==false) {
 			System.out.println("대문자 포함하시오.");
 			errorString = "Error!! Follow the Constraint";
-		}else if
-		(password.matches(".*[0-9].*")==false) {
+			request.setAttribute("errorString", errorString);
+		}
+		//password Constraint [숫자 포함]
+		if (password.matches(".*[0-9].*")==false) {
 			System.out.println("숫자 포함하시오.");
 			errorString = "Error!! Follow the Constraint";
+			request.setAttribute("errorString", errorString);
 		}
 		
+		// in case user doesn't insert any of such information on registration.
+		if (userName == "" || password == "" || emailAddress == "" || nickName == "" || gender == "" || answer == "") {
+			errorString = "UserAccount information invalid!";
+			request.setAttribute("errorString", errorString);
+		} 
+		else {
+			UserAccount useraccount = new UserAccount(userName, emailAddress, nickName, gender, password, answer);
 		
 		// try to figure out does that user account already exist in DB. so that prevent DB Error.
 		try {
 			UserAccount isExist = DBUtils.checkAccount(conn, useraccount);
 			
 			if (isExist == null) {
+				
 				System.out.println("DB에 존재 안한답니다.");
 				try {
 					DBUtils.insertUser(conn, useraccount);
@@ -108,18 +107,19 @@ public class CreateUserAccountServlet extends HttpServlet {
 				// duplicate user name is exist in DB already.
 				System.out.println("DB에 존재 한답니다.");
 				errorString = "Same User_Name is already exists in Database!!";
+				request.setAttribute("errorString", errorString);
 			}
+			
+			// Store information to request attribute, before forward to views.
+//				request.setAttribute("errorString", errorString);
+				request.setAttribute("useraccount", useraccount);
 			
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
-		// Store information to request attribute, before forward to views.
-			request.setAttribute("errorString", errorString);
-			request.setAttribute("useraccount", useraccount);
-		
-		
+	}
 		// If error, forward to Edit page.
 		if (errorString != null) {
 			RequestDispatcher dispatcher = request.getServletContext()
