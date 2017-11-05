@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
    <head>
@@ -37,6 +38,8 @@
 		 <div id="login_row">
 		      <h3 id="login_title">Login Page</h3>
 		      <p style="color: red;">${errorString}</p>
+		      
+		      
 		 
 			<!--  new code --> 
 			<form id="login_form_id" method="POST">
@@ -49,10 +52,10 @@
 		               <td>Password</td>
 		               <td><input type="password" id = "passwd_id" name="password" class="form-control" value= "${user.password}" /> </td>
 		            </tr>
-		            <tr>
-		               <td>Remember me</td>
-		               <td><input type="checkbox" id = "rememberMe_id" name="rememberMe" value= "Y" /> </td>
-		            </tr>
+<!-- 		            <tr> -->
+<!-- 		               <td>Remember me</td> -->
+<!-- 		               <td><input type="checkbox" id = "rememberMe_id" name="rememberMe" value= "Y" /> </td> -->
+<!-- 		            </tr> -->
 		            <tr>
 						<td colspan="4"><input type="submit" class="form-control" value="로그인"/></td>
 					</tr>

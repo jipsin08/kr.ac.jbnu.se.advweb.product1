@@ -47,6 +47,12 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String rememberMeStr = request.getParameter("rememberMe");
 		boolean remember = "Y".equals(rememberMeStr);
+		
+		HttpSession session2 = request.getSession(true);
+		session2.setAttribute("id", userName);
+		session2.setAttribute("pw", password);
+		session2.setAttribute("ti", new Long(System.currentTimeMillis()));
+
 
 		UserAccount user = null;
 		boolean hasError = false;
@@ -56,19 +62,19 @@ public class LoginServlet extends HttpServlet {
 				password.contains("$") == false & password.contains("%") == false & password.contains("^") == false & password.contains("&") == false & //
 				password.contains("*") == false & password.contains("-") == false & password.contains("=") == false & password.contains(".") == false & //
 				password.contains("'") == false & password.contains(";") == false) {
-			System.out.println("특수문자 포함하시오.");
+			System.out.println("�듅�닔臾몄옄 �룷�븿�븯�떆�삤.");
 			hasError = true;
 			errorString = "Typing valid value on username, also password as well.";
 		}
 		
 		if(password.matches(".*[A-Z].*")==false) {
-			System.out.println("대문자 포함하시오.");
+			System.out.println("��臾몄옄 �룷�븿�븯�떆�삤.");
 			hasError = true;
 			errorString = "Typing valid value on username, also password as well.";
 		}
 		
 		if(password.matches(".*[0-9].*")==false) {
-			System.out.println("숫자 포함하시오.");
+			System.out.println("�닽�옄 �룷�븿�븯�떆�삤.");
 			hasError = true;
 			errorString = "Typing valid value on username, also password as well.";
 		}

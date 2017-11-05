@@ -1,6 +1,24 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%
+	HttpSession session2 = request.getSession(false);
+
+	String n = (String)session2.getAttribute("id");
+	String p = (String)session2.getAttribute("pw");
+	Long start = (Long)session2.getAttribute("ti");
+	
+	long current = System.currentTimeMillis();
+	long dur = current - start.longValue();
+	long dura_min = (dur/1000)/60;
+	long dura_sec = (dur/1000)%60;
+	String session_dur = "" +dura_min+ "분" +dura_sec+"초";
+	
+	//59초 후, 자동으로 로그아웃이 된다.
+	if(dura_sec == 59.0){
+		session2.invalidate();
+	}
+%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -63,8 +81,9 @@
 	        <div class="row">
 	          <div class="col-lg-8 col-md-10 mx-auto">
 	            <div class="site-heading">
-	              <h1>${user.userName}</h1>
-	              <span class="subheading">This is My Blog</span>
+	              <h1><%=n %></h1>
+	              <span class="subheading"><%=p %></span>
+	              <span class="subheading"><%=session_dur %></span>
 <!-- 	              <a href="javascript:void(0);" onclick="javascript:showUserInfo();">Show More</a> -->
 <!-- 	              <div id="additioalUserInfo"></div> -->
 	            </div>
