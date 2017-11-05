@@ -44,29 +44,14 @@ function sendIt() {
         }
       f.password.value = str;
 
-      var sample = document.getElementById('gender');
-
-      for(var i=0; i<sample.length; i++){
-			if(sample[i].checked == true){
-				str = sample[i].value;
-				str = str.trim();
-		        if(!str) {
-		            alert("\n성별을 입력하세요. ");
-		            f.gender.focus();
-		            return;
-		        }
-		        f.gender.value = str;
-			}
-          }
-
-//       str = f.gender.value;
-//       str = str.trim();
-//         if(!str) {
-//             alert("\n성별을 입력하세요. ");
-//             f.gender.focus();
-//             return;
-//         }
-//       f.gender.value = str;
+      str = f.gender.value;
+      str = str.trim();
+        if(!str) {
+            alert("\n성별을 입력하세요. ");
+            f.gender.focus();
+            return;
+        }
+      f.gender.value = str;
 
       str = f.nickName.value;
       str = str.trim();
@@ -103,7 +88,10 @@ function sendIt() {
 <body>
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script src="<c:url value="/js/validation.js" />"></script>   
+	<script src="<c:url value="/js/validation.js" />"></script>
+	
+	<jsp:include page="_header.jsp"></jsp:include>
+	
 	 <div>
 	   <h1>회원 관리</h1>
       <p style="color: red;">${errorString}</p>
@@ -115,7 +103,7 @@ function sendIt() {
 			<table border="0">
 				<tr>
 					<td>USER_NAME =></td>
-					<td><input type="text" name="userName" class="form-control" value="${useraccount.userName}" /></td>
+					<td><input type="text" name="userName" class="form-control" value="${useraccount.userName}" autofocus /></td>
 				</tr>
 				<tr>
 					<td><strong>===========</strong></td>
@@ -138,20 +126,7 @@ function sendIt() {
                 <!-- **!!this gender attribute should be checked by radio button -->
 				<tr>
 					<td>GENDER =></td>
-<%-- 					<td><input type="text" name="gender" class="form-control" value="${useraccount.gender}" /></td> --%>
-					<td>
-<!--   							<p>Please select your preferred contact method:</p> -->
-  							<div>
-   							 	<input type="radio" id="genderChoice1" name="gender" class="form-control" value="M"/>
-    							<label for="genderChoice1">M</label>
-
-    							<input type="radio" id="genderChoice2" name="gender" class="form-control" value="F"/>
-    							<label for="genderChoice2">F</label>
-
-    							<input type="radio" id="genderChoice3" name="gender" class="form-control" value="X"/>
-    							<label for="genderChoice3">X</label>
-  							</div>
-					</td>
+					<td><input type="text" name="gender" class="form-control" value="${useraccount.gender}" /></td>
 				</tr>
 				<tr>
 					<td><strong>===========</strong></td>
