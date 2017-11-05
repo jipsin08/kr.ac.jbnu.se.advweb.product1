@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.ac.jbnu.se.advweb.product.model.PostBoard;
+import kr.ac.jbnu.se.advweb.product.model.Post;
 import kr.ac.jbnu.se.advweb.product.utils.DBUtils;
 import kr.ac.jbnu.se.advweb.product.utils.MyUtils;
 
@@ -55,28 +55,35 @@ public class PostTextServlet extends HttpServlet {
 		
 		Connection conn = MyUtils.getStoredConnection(request);
 		
-		// 우선은 제목과 내용만
-		String postSub = (String) request.getParameter("postSub");
-		String postCont = (String) request.getParameter("postCont");
+		// Test_value insert
+//		String subject = (String) request.getParameter("postSub");
+//		String content = (String) request.getParameter("postCont");
 		
-		PostBoard postboard = new PostBoard(postSub, postCont);
+		// test code?
 		
-		//아직 에러처리 빼고
+		Post post = new Post();
+		post.setPostContent("test_content");
+		post.setPostId("test_id");
+		post.setPostNickname("test_nickname");
+		post.setPostSubject("post_subject");
+		
+		//�븘吏� �뿉�윭泥섎━ 鍮쇨퀬
 		String errorString = null;
 		
 		try {
-			DBUtils.insertPost(conn, postboard);
+			DBUtils.insertPost(conn, post);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			errorString = e.getMessage();
 		}
 		
 		request.setAttribute("errorString", errorString);
-		request.setAttribute("postboard", postboard);
-		//정상
-		System.out.println("getPostSubject() : "+postboard.getPostSubject());
-		//비정상
-		System.out.println("getPostContent() : "+postboard.getPostContent());
+		request.setAttribute("post", post);
+		
+		//�젙�긽
+		System.out.println("getPostSubject() : "+post.getPostSubject());
+		//鍮꾩젙�긽
+		System.out.println("getPostContent() : "+post.getPostContent());
 		
 		response.sendRedirect(request.getContextPath() + "/postmain");
 	}

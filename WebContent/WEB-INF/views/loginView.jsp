@@ -40,7 +40,6 @@
 		      <p style="color: red;">${errorString}</p>
 		      
 		      
-		 
 			<!--  new code --> 
 			<form id="login_form_id" method="POST">
 		         <table border="0">

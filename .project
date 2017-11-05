@@ -28,41 +28,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>WebContent/css/validation.css</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/%EB%B0%9C%EC%95%94/validation.css</locationURI>
-		</link>
-		<link>
-			<name>WebContent/img/about-bg.jpg</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/%EB%B0%9C%EC%95%94/about-bg.jpg</locationURI>
-		</link>
-		<link>
-			<name>WebContent/img/contact-bg.jpg</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/%EB%B0%9C%EC%95%94/contact-bg.jpg</locationURI>
-		</link>
-		<link>
-			<name>WebContent/img/home-bg.jpg</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/%EB%B0%9C%EC%95%94/home-bg.jpg</locationURI>
-		</link>
-		<link>
-			<name>WebContent/img/post-bg.jpg</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/%EB%B0%9C%EC%95%94/post-bg.jpg</locationURI>
-		</link>
-		<link>
-			<name>WebContent/img/post-sample-image.jpg</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/%EB%B0%9C%EC%95%94/post-sample-image.jpg</locationURI>
-		</link>
-		<link>
-			<name>WebContent/js/validation.js</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Desktop/%EB%B0%9C%EC%95%94/validation.js</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>
