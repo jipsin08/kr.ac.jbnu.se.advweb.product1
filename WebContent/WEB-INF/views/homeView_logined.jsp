@@ -60,9 +60,9 @@
 	            <li class="nav-item">
 	              <a class="nav-link" href="/product/LoginedHome">Home</a>
 	            </li>
-	            <li class="nav-item">
-	              <a class="nav-link" href="${pageContext.request.contextPath}/createUserAccount">xxxx</a>
-	            </li>
+<!-- 	            <li class="nav-item"> -->
+<%-- 	              <a class="nav-link" href="${pageContext.request.contextPath}/createUserAccount">xxxx</a> --%>
+<!-- 	            </li> -->
 	            <li class="nav-item">
 	              <a class="nav-link" href="${pageContext.request.contextPath}/postmain">Post</a>
 	            </li>

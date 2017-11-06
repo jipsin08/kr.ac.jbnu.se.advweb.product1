@@ -63,12 +63,12 @@
 	            <li class="nav-item">
 	              <a class="nav-link" href="/product">Home</a>
 	            </li>
-	            <li class="nav-item">
-	              <a class="nav-link" href="${pageContext.request.contextPath}/createUserAccount">Registration</a>
-	            </li>
-	            <li class="nav-item">
-	              <a class="nav-link" href="${pageContext.request.contextPath}/postmain">Post</a>
-	            </li>
+<!-- 	            <li class="nav-item"> -->
+<%-- 	              <a class="nav-link" href="${pageContext.request.contextPath}/createUserAccount">Registration</a> --%>
+<!-- 	            </li> -->
+<!-- 	            <li class="nav-item"> -->
+<%-- 	              <a class="nav-link" href="${pageContext.request.contextPath}/postmain">Post</a> --%>
+<!-- 	            </li> -->
 	            <li class="nav-item">
 	              <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
 	            </li>

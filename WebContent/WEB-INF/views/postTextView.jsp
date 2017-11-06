@@ -22,8 +22,8 @@
 	</head>
 	<body>
 
-		<jsp:include page="_header.jsp"></jsp:include>
-    	<jsp:include page="_menu.jsp"></jsp:include>
+		<jsp:include page="_header_logined.jsp"></jsp:include>
+<%--     	<jsp:include page="_menu.jsp"></jsp:include> --%>
     	
     	<form method="post" action="${pageContext.request.contextPath}/postText">
     	    <table>

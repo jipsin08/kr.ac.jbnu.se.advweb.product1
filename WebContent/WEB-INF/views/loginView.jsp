@@ -63,7 +63,7 @@
 		      	<div class="panel-footer">
 				 	Don't have an account! <a href="${pageContext.request.contextPath}/registration"> Sign Up Here </a><br>
 				</div>
-				<div style="padding: 0 20%;">
+				<div style="">
 					<a href="${pageContext.request.contextPath}/recoveringID">아이디 찾기</a>
 					<a href="${pageContext.request.contextPath}/recoveringPW">비밀번호 찾기</a>
 				</div>
