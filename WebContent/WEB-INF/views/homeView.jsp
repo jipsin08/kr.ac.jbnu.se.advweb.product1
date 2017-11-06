@@ -70,7 +70,7 @@
 <%-- 	              <a class="nav-link" href="${pageContext.request.contextPath}/postmain">Post</a> --%>
 <!-- 	            </li> -->
 	            <li class="nav-item">
-	              <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
+	              <a class="nav-link" href="${pageContext.request.contextPath}/login">login</a>
 	            </li>
 	          </ul>
 	        </div>
@@ -85,7 +85,6 @@
 	          <div class="col-lg-8 col-md-10 mx-auto">
 	            <div class="site-heading">
 	              <h1><%=n %></h1>
-	              <span class="subheading"><%=p %></span>
 <!-- 	              <a href="javascript:void(0);" onclick="javascript:showUserInfo();">Show More</a> -->
 <!-- 	              <div id="additioalUserInfo"></div> -->
 	            </div>

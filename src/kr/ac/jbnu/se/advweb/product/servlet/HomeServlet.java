@@ -34,7 +34,18 @@ public class HomeServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
+		HttpSession session = request.getSession(false);
+
+		String n = (String)session.getAttribute("id");
+		String p = (String)session.getAttribute("pw");
+		
+		String prsorabs =null;
+		
+		if (session ==null){
+			prsorabs = "login";
+		}else{
+			prsorabs = "logout";
+		}
 	}
 
 }

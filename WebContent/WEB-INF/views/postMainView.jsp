@@ -35,6 +35,8 @@
 		})
 		</script>
 		
+		
+		
 <!-- 		태규형 -->
 		
 		<script>
@@ -54,7 +56,24 @@
 		</script>
 		
 		
-<!-- 		태규형끝 -->
+<!-- 		태규형끝  밑은 성한이의 태규형-->
+		      <script>
+      
+		      $(document).ready(function() {
+		         $("#check_form_id").on('submit', function (e) {
+		            $('input:checkbox[id="checkbox_id"]').each(function() {
+		               if(this.checked) {
+		                  alert("스크랩 하겠습니다.");
+		                  
+		               }
+		            })
+		            
+		         })
+		      });
+		            
+		
+		      </script>
+
 		
 		
 				
@@ -147,7 +166,7 @@
 							<label for="optChoice3">내용</label>
 							
 							<input type="text" id="search_id" name="search" class="" /> 
-							<input type="submit" class="form-control" value="검색"/>
+							<input type="submit" class="" value="검색"/>
 						</div>
                		</td>
             	</tr>
@@ -187,13 +206,15 @@
 <%-- 		       		</c:forEach> --%>
 <!-- 				</table> -->
 <!-- 			</form> -->
-			
+<%-- 			action="${pageContext.request.contextPath}/postmytable" --%>
 				<!-- 세로로 리스트 보이게 -->	
-           	<form id="check_form_id" method="post">
+           	<form id="check_form_id" method="post" action="${pageContext.request.contextPath}/postmytable">
            		<!-- doPost -->
-      			<input type="button" class="form-control" value="Checked item DELETE" onclick="validate()"/>
+      			<input type="button" class="form-control" value="Checked item DELETE" onclick="validate()" />
       			
-			    <table border="5" width ="50%" cellspacing="10">    
+      			<input type="submit" class="form-control" value="Scrapping"/>
+      			
+			    <table border="5" width ="50%" cellspacing="10">
 			    
 			        <c:forEach items="${postList}" var="postObject" >
 					    <tr>

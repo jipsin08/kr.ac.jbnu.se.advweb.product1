@@ -58,7 +58,7 @@ public class EditPostServlet extends HttpServlet {
         
         //에러 뿜뿜
         if (errorString != null && postboard == null) {
-            response.sendRedirect(request.getServletPath() + "/postMain");
+            response.sendRedirect(request.getServletPath() + "/postmain");
             return;
         }
         

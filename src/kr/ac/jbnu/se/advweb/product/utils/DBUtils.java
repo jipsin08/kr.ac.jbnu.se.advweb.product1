@@ -10,6 +10,7 @@ import java.util.List;
 import javax.xml.stream.events.Comment;
 
 import kr.ac.jbnu.se.advweb.product.model.Comments;
+import kr.ac.jbnu.se.advweb.product.model.MyPost;
 import kr.ac.jbnu.se.advweb.product.model.Post;
 import kr.ac.jbnu.se.advweb.product.model.Product;
 import kr.ac.jbnu.se.advweb.product.model.UserAccount;
@@ -526,4 +527,125 @@ public static List<Post> searchByContent(Connection conn, String input_value) th
 
 		pstm.executeUpdate();
 	}
+		public static void insertScrapPost(Connection conn, MyPost MyPost) throws SQLException {
+	         String sql = "Insert into My_board(post_id, post_Scrapper_id, post_nickname, post_subject, post_content, post_date, post_visible) "
+	               + "values (?,?,?,?,?,sysdate(),1)";
+
+	         PreparedStatement pstm = conn.prepareStatement(sql);
+	         
+	         //그냥 써도 null 값 들어가서 오류 안날거 같긴한데
+	      /*      pstm.setString(1, postboard.getPostNum());
+	         pstm.setString(2, postboard.getPostId());
+	         pstm.setString(3, postboard.getPostNickname());
+	         pstm.setString(4, postboard.getPostSubject());
+	         pstm.setString(5, postboard.getPostContent());
+	      */
+	         //제목 내용만 테스트
+	         pstm.setString(1, MyPost.getPostId());
+	         pstm.setString(2, MyPost.getpostScrapperId());
+	         pstm.setString(3, MyPost.getPostNickname());
+	         pstm.setString(4, MyPost.getPostSubject());
+	         pstm.setString(5, MyPost.getPostContent());
+	      
+	         pstm.executeUpdate();
+	      }
+	   
+	   
+	      public static void deleteMyPost(Connection conn, String postNum) throws SQLException {
+	         String sql = "Delete From MyPost_board where post_num= ?";
+	      
+	         PreparedStatement pstm = conn.prepareStatement(sql);
+	      
+	         pstm.setString(1, postNum);
+	      
+	         pstm.executeUpdate();
+	      }
+	      public static List<MyPost> queryScrapPost(Connection conn) throws SQLException {
+	          String sql = "Select a.post_num, a.post_Scrapper_id, a.post_id, a.post_nickname, a.post_subject, a.post_content, a.post_date, a.post_visible"
+	                + " from my_board a where a.post_visible = 1";
+
+	          PreparedStatement pstm = conn.prepareStatement(sql);
+
+	          ResultSet rs = pstm.executeQuery();
+	          List<MyPost> myPosts = new ArrayList<MyPost>();
+	          while (rs.next()) {
+	             
+	             String postId = rs.getString("post_id");
+	             String postScrapperId = rs.getString("post_Scrapper_id");
+	             String postNickname = rs.getString("post_nickname");
+	             String postSubject = rs.getString("post_subject");
+	             String postContent = rs.getString("post_content");
+	             String postDate = rs.getString("post_date");
+	             int postNum = rs.getInt("post_num");
+	             int postVisible = rs.getInt("post_visible");
+	          
+	             MyPost mypost = new MyPost();
+	             
+	             mypost.setPostId(postId);      
+	             mypost.setpostScrapperId(postScrapperId);
+	             mypost.setPostNickname(postNickname);
+	             mypost.setPostSubject(postSubject);
+	             mypost.setPostContent(postContent);
+	             mypost.setPostVisible(postVisible);
+	             mypost.setPostDate(postDate);
+	             mypost.setPostNum(postNum);
+	             myPosts.add(mypost);
+
+	             //Null NUll 한 값 해결
+	             //System.out.println(postboard.getPostDate() + postboard.getPostNickname());   
+	          }
+	          //System.out.println("id : "+ list.get(0) + "id : " +list.get(2));
+	          return myPosts;
+	    }
+	      public static MyPost findMyPost(Connection conn, int postNum) throws SQLException {
+	          String sql = "Select a.post_num, a.post_id, a.post_nickname, a.post_subject, a.post_content, a.post_date, a.post_visible, a.post_scrapper_id"
+	                + " from my_board a where a.post_num=?";
+	       
+	          PreparedStatement pstm = conn.prepareStatement(sql);
+	          pstm.setInt(1, postNum);
+	       
+	          ResultSet rs = pstm.executeQuery();
+	       
+	          while (rs.next()) {
+	             String postId = rs.getString("post_id");
+	             String postNickname = rs.getString("post_nickname");
+	             String postScrapperId = rs.getString("post_scrapper_id");
+	             String postSubject = rs.getString("post_subject");
+	             String postContent = rs.getString("post_content");
+	             int postVisible = rs.getInt("post_visible");
+	             
+	             MyPost postboard = new MyPost(postId, postScrapperId, postNickname, postSubject, postContent, postVisible);
+	             return postboard;
+	          }
+	          return null;
+	       }
+	      public static MyPost getMyPost(Connection conn, int postNum) throws SQLException {
+	          String sql = "select * From Post_board where post_num = ?";
+	       
+	          PreparedStatement pstm = conn.prepareStatement(sql);
+	       
+	          pstm.setInt(1, postNum);
+	          ResultSet rs = pstm.executeQuery();
+	          MyPost post = new MyPost();
+	          if (rs.next()) {
+	             String id = rs.getString("post_id");
+	             String nickname = rs.getString("post_nickname");
+	             String subject = rs.getString("post_subject");
+	             String content = rs.getString("post_content");
+	             String date = rs.getString("post_date");
+	             int visible = rs.getInt("post_visible");
+	             
+	             post.setPostContent(content);
+	             post.setPostDate(date);
+	             post.setPostId(id);
+	             post.setPostNickname(nickname);
+	             post.setPostSubject(subject);
+	             post.setPostVisible(visible);
+	             
+	             return post;
+	          }
+	          return null;
+	       }
+	      
+	      
 }

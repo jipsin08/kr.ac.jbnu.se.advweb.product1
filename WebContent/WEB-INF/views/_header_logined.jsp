@@ -22,6 +22,9 @@
             <li class="nav-item">
 	          <a class="nav-link" href="${pageContext.request.contextPath}/postmain">Post</a>
 	         </li>
+	         <li class="nav-item">
+	          <a class="nav-link" href="${pageContext.request.contextPath}/postmytable">MyPost</a>
+	         </li>
             <li class="nav-item">
               <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
             </li>

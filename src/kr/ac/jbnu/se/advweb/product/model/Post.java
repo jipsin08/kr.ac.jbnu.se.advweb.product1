@@ -2,13 +2,13 @@ package kr.ac.jbnu.se.advweb.product.model;
 
 // �엯�젰諛쏆븘�빞 �븷 媛믩뱾 �굹�뿴 --> ck_Editor�뿉�꽌 Insert�슂泥� 諛쏆쓣 �븣 �씠�윭�븳 媛믩뱾�쓣 諛쏆븘�빞 �븿.
 public class Post {
-	private String postId; // 작성자ID
-	private String postNickname; // 작성자닉네임
-	private String postSubject;
-	private String postContent;
-	private String postDate;
-	private int postNum;
-	private int postVisible;
+	public String postId; // 작성자ID
+	public String postNickname; // 작성자닉네임
+	public String postSubject;
+	public String postContent;
+	public String postDate;
+	public int postNum;
+	public int postVisible;
 	public Post() {
 	}
 
