@@ -4,7 +4,7 @@
 <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="/product">My Blog</a>
+        <a class="navbar-brand" href="/product/LoginedHome">My Blog</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -14,14 +14,14 @@
 <%--         	<jsp:include page="_menu.jsp"></jsp:include> --%>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/product">Home</a>
+              <a class="nav-link" href="/product/LoginedHome">Home</a>
             </li>
 <!--             <li class="nav-item"> -->
 <%--               <a class="nav-link" href="${pageContext.request.contextPath}/createUserAccount">Registration</a> --%>
 <!--             </li> -->
-<!--             <li class="nav-item"> -->
-<%-- 	          <a class="nav-link" href="${pageContext.request.contextPath}/postmain">Post</a> --%>
-<!-- 	         </li> -->
+            <li class="nav-item">
+	          <a class="nav-link" href="${pageContext.request.contextPath}/postmain">Post</a>
+	         </li>
             <li class="nav-item">
               <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
             </li>
