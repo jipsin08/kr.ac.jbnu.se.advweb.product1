@@ -51,23 +51,17 @@
          <a href="postText">링크</a> -->
          
          <h1>
-            <a href="postText">
-               <span class="new_post_text">텍스트</span>
-            </a>
-            <a href="postText">
-               <span class="new_post_photo">사진</span>
-            </a>
-            <a href="postText">
-               <span class="new_post_link">링크</span>
-            </a>
-         </h1>
+				<a href="postText">
+					<span class="new_post_text">게시물 등록</span>
+				</a>
+		</h1>
       
       </nav>
 
               
               <!-- 세로로 리스트 보이게 -->   
               <form id="check_form_id" method="post">
-               <input type="submit" class="" value="Please"/>
+<!--                <input type="submit" class="" value="Please"/> -->
              <table border="5" width ="50%" cellspacing="10">    
                  <c:forEach items="${postList}" var="postObject" >
                        <tr>

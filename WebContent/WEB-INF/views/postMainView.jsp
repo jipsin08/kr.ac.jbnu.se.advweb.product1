@@ -136,13 +136,7 @@
 			
 			<h1>
 				<a href="postText">
-					<span class="new_post_text">텍스트</span>
-				</a>
-				<a href="postText">
-					<span class="new_post_photo">사진</span>
-				</a>
-				<a href="postText">
-					<span class="new_post_link">링크</span>
+					<span class="new_post_text">게시물 등록</span>
 				</a>
 			</h1>
 		
@@ -173,40 +167,6 @@
            	</table>
            	</form>
            	
-           	<!-- 세로로 리스트 보이게 -->	
-<!--            	<form id="check_form_id" method="post"> -->
-<!--       			<input type="submit" class="" value="Please"/> -->
-      		
-<!-- 			    <table border="5" width ="50%" cellspacing="10">     -->
-			    
-<%-- 			        <c:forEach items="${postList}" var="postObject" > --%>
-<!-- 					    <tr> -->
-<!-- 					    	클릭 이벤트 넣을 것 -->
-<!-- 					    	<th><input type="checkbox" id="check_id" class=""  -->
-<%-- 					    	value="${postObject.postNum}">${postObject.postSubject}</th>			 --%>
-<!-- 					    </tr>		     -->
-<!-- 					    <tr> -->
-<!-- 					    	<td height="200"> -->
-<!-- 					    	제목이 공사당해서, 글 내용 클릭하면 postSingle 이동하게 임시 수정 -->
-<%-- 					    	<a href="postSingle?postNum=${postObject.postNum}">${postObject.postContent}</a> --%>
-<!-- 					    	</td>			 -->
-<!-- 					    </tr> -->
-<!-- 					    <tr> -->
-<%-- 					    	<td>${postObject.postDate}</td>			 --%>
-<!-- 					    </tr> -->
-					    
-<!-- 					    css 전 임시 -->
-<!-- 					    <tr></tr> -->
-<!-- 					    <tr></tr> -->
-<!-- 					    <tr></tr> -->
-<!-- 					    <tr></tr> -->
-<!-- 					    <tr></tr> -->
-<!-- 					    <tr></tr> -->
-					    
-<%-- 		       		</c:forEach> --%>
-<!-- 				</table> -->
-<!-- 			</form> -->
-<%-- 			action="${pageContext.request.contextPath}/postmytable" --%>
 				<!-- 세로로 리스트 보이게 -->	
            	<form id="check_form_id" method="post" action="${pageContext.request.contextPath}/postmytable">
            		<!-- doPost -->
@@ -220,7 +180,7 @@
 					    <tr>
 					    	<!-- 체크 박스 부분 -->
 					    	<th>
-					    	<input type="checkbox" name="postNum" id="checkbox_id" class="form-control" value="${postObject.postNum}">
+					    	<input type="checkbox" name="postNum" id="checkbox_id" class="" value="${postObject.postNum}">
 					    		<a href="postSingle?postNum=${postObject.postNum}">제목: ${postObject.postSubject}</a>
 					    		</th>			
 					    </tr>		    
