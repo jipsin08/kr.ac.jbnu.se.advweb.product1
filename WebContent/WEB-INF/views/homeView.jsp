@@ -2,13 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
-	HttpSession session2 = request.getSession(false);
-
-	String n = (String)session2.getAttribute("id");
-	String p = (String)session2.getAttribute("pw");
-	
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -34,20 +27,7 @@
 			
 			<!--user_info-->
 <!-- 			<script src="https://code.jquery.com/jquery-3.1.0.js"></script> -->
-			<script>
-// 				$(document).ready(function() {
-// 				});
 				
-// 				function showUserInfo()
-// 				{
-// 					$.get("${pageContext.request.contextPath}/userInfo", 
-// 						{
-// 							more : "Yes"
-// 						}, function(data) {
-// 						$('#additioalUserInfo').html(data);
-// 					});
-// 				}
-			</script>
 	</head>
 	<body>
 	    <!-- Navigation -->
@@ -84,7 +64,7 @@
 	        <div class="row">
 	          <div class="col-lg-8 col-md-10 mx-auto">
 	            <div class="site-heading">
-	              <h1><%=n %></h1>
+	              <h1>Your Name</h1>
 <!-- 	              <a href="javascript:void(0);" onclick="javascript:showUserInfo();">Show More</a> -->
 <!-- 	              <div id="additioalUserInfo"></div> -->
 	            </div>
@@ -98,37 +78,19 @@
 	      <div class="row">
 	        <div class="col-lg-8 col-md-10 mx-auto">
 	          <div class="post-preview">
-	            <a href="post.html">
-	              <h2 class="post-title">
-	                Man must explore, and this is exploration at its greatest
+	            <a>
+	              <h2 class="post-title" align="center">
+	                	Expand your dreams
 	              </h2>
 	              <h3 class="post-subtitle">
-	                Problems look mighty small from 150 miles up
+	                	<p align="center">with My blog</p>
 	              </h3>
 	            </a>
-	            <p class="post-meta">Posted by
-	              <a href="#">Start Bootstrap</a>
-	              on September 24, 2017</p>
+	            <p class="post-meta" align="center">
+	              <a>(tel)</a>
+	              010-6641-8732</p>
 	          </div>
 	          <hr>
-	          <div class="post-preview">
-	            <a href="post.html">
-	              <h2 class="post-title">
-	                Failure is not an option
-	              </h2>
-	              <h3 class="post-subtitle">
-	                Many say exploration is part of our destiny, but it’s actually our duty to future generations.
-	              </h3>
-	            </a>
-	            <p class="post-meta">Posted by
-	              <a href="#">Start Bootstrap</a>
-	              on July 8, 2017</p>
-	          </div>
-	          <hr>
-	          <!-- Pager -->
-	          <div class="clearfix">
-	            <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-	          </div>
 	        </div>
 	      </div>
 	    </div>

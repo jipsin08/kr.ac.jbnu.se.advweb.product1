@@ -5,7 +5,7 @@
 	HttpSession session2 = request.getSession(false);
 
 	String n = (String)session2.getAttribute("id");
-	String p = (String)session2.getAttribute("pw");
+// 	String p = (String)session2.getAttribute("pw");
 	Long start = (Long)session2.getAttribute("ti");
 	
 	long current = System.currentTimeMillis();
@@ -82,8 +82,8 @@
 	          <div class="col-lg-8 col-md-10 mx-auto">
 	            <div class="site-heading">
 	              <h1><%=n %></h1>
-	              <span class="subheading"><%=p %></span>
-	              <span class="subheading"><%=session_dur %></span>
+	              <span class="subheading"></span>
+	              <span class="subheading">로그인 시간 : <%=session_dur %></span>
 <!-- 	              <a href="javascript:void(0);" onclick="javascript:showUserInfo();">Show More</a> -->
 <!-- 	              <div id="additioalUserInfo"></div> -->
 	            </div>
@@ -91,21 +91,41 @@
 	        </div>
 	      </div>
 	    </header>
-	    
-		<a href="javascript:void(0);" onclick="javascript:showUserInfo();">타인 검색</a>
-		<div id="additioalUserInfo"></div>
+		<!-- Main Content -->
+	    <div class="container">
+	      <div class="row">
+	        <div class="col-lg-8 col-md-10 mx-auto">
+	          <div class="post-preview">
+	            <a>
+	              <h2 class="post-title" align="center">
+	                	Expand your dreams
+	              </h2>
+	              <h3 class="post-subtitle">
+	                	<p align="center">with My blog</p>
+	              </h3>
+	            </a>
+	            <p class="post-meta" align="center">
+	              <a>(tel)</a>
+	              010-6641-8732</p>
+	          </div>
+	          <hr>
+	        </div>
+	      </div>
+	    </div>
+	    <hr>
+<!-- 		<div id="additioalUserInfo"></div> -->
 	
-			<br>
+<!-- 			<br> -->
 		
-		<ul>
-			<li>Login/Logout functions in proper situation.</li>
-			<li>Storing user information in cookies with session.</li>
-			<li>Blog Post List</li>
-			<li>Create Post</li>
-			<li>Edit Post</li>
-			<li>Delete Post</li>
-			<li>Add favorite<em>(other Blog)</em></li>
-		</ul>
+<!-- 		<ul> -->
+<!-- 			<li>Login/Logout functions in proper situation.</li> -->
+<!-- 			<li>Storing user information in cookies with session.</li> -->
+<!-- 			<li>Blog Post List</li> -->
+<!-- 			<li>Create Post</li> -->
+<!-- 			<li>Edit Post</li> -->
+<!-- 			<li>Delete Post</li> -->
+<!-- 			<li>Add favorite<em>(other Blog)</em></li> -->
+<!-- 		</ul> -->
 	
 		<jsp:include page="_footer.jsp"></jsp:include>
 	</body>
