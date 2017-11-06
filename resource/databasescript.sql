@@ -8,6 +8,16 @@ grant all privileges on simpleweb.* to root@localhost ;
 
 -- Create table
 
+create table POST_COMMENT
+(
+	COMMENT_ID int not null auto_increment,
+	USER_NAME VARCHAR(30) not null,
+	COMMENT VARCHAR(30) not null,
+	post_num int not null,
+	foreign key (post_num) references POST_BOARD(post_num),
+	primary key (COMMENT_ID)
+);
+
 create table USER_ACCOUNT
 (
 USER_CODE INT not null AUTO_INCREMENT,
@@ -21,7 +31,7 @@ primary key (USER_CODE)
 );
 
 
--- 게시물 번호, 작성자 ID, 작성자 닉네임, 제목, 내용, 날짜, 게시물 공개여부
+-- 寃뚯떆臾� 踰덊샇, �옉�꽦�옄 ID, �옉�꽦�옄 �땳�꽕�엫, �젣紐�, �궡�슜, �궇吏�, 寃뚯떆臾� 怨듦컻�뿬遺�
 
 create table POST_BOARD
 (
@@ -42,6 +52,8 @@ NAME  VARCHAR(128) not null,
 PRICE FLOAT not null,
 primary key (CODE)
 );
+
+
 
 
 -- Insert data: ---------------------------------------------------------------

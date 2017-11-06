@@ -15,9 +15,9 @@
 	String session_dur = "" +dura_min+ "분" +dura_sec+"초";
 	
 	//59초 후, 자동으로 로그아웃이 된다.
-	if(dura_sec == 59.0){
-		session2.invalidate();
-	}
+// 	if(dura_sec == 59.0){
+// 		session2.invalidate();
+// 	}
 %>
 <html>
 	<head>

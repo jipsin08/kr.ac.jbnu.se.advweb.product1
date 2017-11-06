@@ -7,11 +7,92 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.stream.events.Comment;
+
+import kr.ac.jbnu.se.advweb.product.model.Comments;
 import kr.ac.jbnu.se.advweb.product.model.Post;
 import kr.ac.jbnu.se.advweb.product.model.Product;
 import kr.ac.jbnu.se.advweb.product.model.UserAccount;
 
 public class DBUtils {
+	
+//	public static void insertUser(Connection conn, UserAccount useraccount) throws SQLException {
+//		String sql = "Insert into USER_ACCOUNT(USER_NAME, EMAIL_ADDRESS, NICKNAME, GENDER, PASSWORD, ANSWER) values (?,?,?,?,?,?)";
+//
+//		PreparedStatement pstm = conn.prepareStatement(sql);
+//		
+//		pstm.setString(1, useraccount.getUserName());
+//		pstm.setString(2, useraccount.getEmailAddress());
+//		pstm.setString(3, useraccount.getNickName());
+//		pstm.setString(4, useraccount.getGender());
+//		pstm.setString(5, useraccount.getPassword());
+//		pstm.setString(6, useraccount.getAnswer());
+//
+//		pstm.executeUpdate();
+//	}
+	
+	public static void CreateComment(Connection conn, //
+			Comments _comment) throws SQLException {
+		System.out.println("ddddd");
+		String sql = "Insert into POST_COMMENT(USER_NAME, COMMENT, post_num) values (?,?,?)";
+
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		
+		pstm.setString(1, _comment.getUserName());
+		pstm.setString(2, _comment.getComment());
+		pstm.setInt(3, _comment.getpostNum());
+		
+		pstm.executeUpdate();
+	}
+	
+	public static List<Comments> queryComment(Connection conn, int _postNum) throws SQLException {
+		String sql = "Select user_name, comment, post_num from post_comment where post_num=" + String.valueOf(_postNum);
+
+		PreparedStatement pstm = conn.prepareStatement(sql);
+
+		ResultSet rs = pstm.executeQuery();
+		List<Comments> list = new ArrayList<Comments>();
+		while (rs.next()) {
+			String userName = rs.getString("user_name");
+			String comment = rs.getString("comment");
+			
+			int postNum = _postNum;
+			Comments comments = new Comments();
+			comments.setComment(comment);
+			comments.setpostNum(postNum);
+			comments.setUserName(userName);
+			list.add(comments);
+			
+			//정상
+			//System.out.println(product.getName());
+		}
+//		
+//		//System.out.println("id : "+ list.get(0) + "id : " +list.get(1));
+		return list;
+	}
+//	public static List<Product> queryProduct(Connection conn) throws SQLException {
+//		String sql = "Select a.Code, a.Name, a.Price from Product a ";
+//
+//		PreparedStatement pstm = conn.prepareStatement(sql);
+//
+//		ResultSet rs = pstm.executeQuery();
+//		List<Product> list = new ArrayList<Product>();
+//		while (rs.next()) {
+//			String code = rs.getString("Code");
+//			String name = rs.getString("Name");
+//			float price = rs.getFloat("Price");
+//			Product product = new Product();
+//			product.setCode(code);
+//			product.setName(name);
+//			product.setPrice(price);
+//			list.add(product);
+//			
+//			//정상
+//			//System.out.println(product.getName());
+//		}
+//		//System.out.println("id : "+ list.get(0) + "id : " +list.get(1));
+//		return list;
+//	}
 
 	public static UserAccount findUser(Connection conn, //
 			String userName, String password) throws SQLException {

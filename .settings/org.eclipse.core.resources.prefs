@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/kr/ac/jbnu/se/advweb/product/model/Product.java=UTF-8
+encoding//src/kr/ac/jbnu/se/advweb/product/servlet/CreateCommentServlet.java=UTF-8
 encoding//src/kr/ac/jbnu/se/advweb/product/servlet/LoginServlet.java=UTF-8
+encoding//src/kr/ac/jbnu/se/advweb/product/servlet/PostSingleServlet.java=UTF-8
 encoding//src/kr/ac/jbnu/se/advweb/product/utils/DBUtils.java=UTF-8
 encoding//src/kr/ac/jbnu/se/advweb/product/utils/MyUtils.java=UTF-8

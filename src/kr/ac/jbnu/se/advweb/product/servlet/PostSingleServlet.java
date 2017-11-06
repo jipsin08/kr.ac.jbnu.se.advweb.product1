@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.ac.jbnu.se.advweb.product.model.Comments;
 import kr.ac.jbnu.se.advweb.product.model.Post;
-import kr.ac.jbnu.se.advweb.product.model.Product;
 import kr.ac.jbnu.se.advweb.product.utils.DBUtils;
 import kr.ac.jbnu.se.advweb.product.utils.MyUtils;
 
@@ -44,19 +44,21 @@ public class PostSingleServlet extends HttpServlet {
 		
 		Connection conn = MyUtils.getStoredConnection(request);
 		String postNumStr = (String) request.getParameter("postNum");
-		//int 형변환
+		//int �삎蹂��솚
 		int postNum = Integer.parseInt(postNumStr);
         Post postboard = null;
+        List<Comments> comments = null;
         String errorString = null;
         
         try {
             postboard = DBUtils.findPost(conn, postNum);
+            comments = DBUtils.queryComment(conn, postNum);
         } catch (SQLException e) {
             e.printStackTrace();
             errorString = e.getMessage();
         }
         
-        //에러 뿜뿜
+        //�뿉�윭 肉쒕퓶
         if (errorString != null && postboard == null) {
             response.sendRedirect(request.getServletPath() + "/postMain");
             return;
@@ -64,6 +66,7 @@ public class PostSingleServlet extends HttpServlet {
         
         request.setAttribute("errorString", errorString);
         request.setAttribute("postboard", postboard);
+        request.setAttribute("commentList", comments);
  
         RequestDispatcher dispatcher = request.getServletContext()
                 .getRequestDispatcher("/WEB-INF/views/postSingleView.jsp");

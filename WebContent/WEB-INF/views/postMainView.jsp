@@ -7,7 +7,9 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>postMain</title>			
+		<link type="text/css" rel="stylesheet" href="<c:url value="/css/validation.css" />" media="screen"/>
+		<title>postMain</title>		
+			
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script>
@@ -112,16 +114,16 @@
 		    	<tr>
                		<td colspan="1">
                			<div>
-			 				<input type="radio" id="optChoice1" name="option" class="form-control" value="username" checked="checked"/>
+			 				<input type="radio" id="optChoice1" name="option" class="" value="username" checked="checked"/>
 							<label for="optChoice1">작성자</label>
 
-							<input type="radio" id="optChoice2" name="option" class="form-control" value="subject"/>
+							<input type="radio" id="optChoice2" name="option" class="" value="subject"/>
 							<label for="optChoice2">제목</label>
 
-							<input type="radio" id="optChoice3" name="option" class="form-control" value="content"/>
+							<input type="radio" id="optChoice3" name="option" class="" value="content"/>
 							<label for="optChoice3">내용</label>
 							
-							<input type="text" id="search_id" name="search" class="form-control" /> 
+							<input type="text" id="search_id" name="search" class="" /> 
 							<input type="submit" class="form-control" value="검색"/>
 						</div>
                		</td>
@@ -131,14 +133,14 @@
            	
            	<!-- 세로로 리스트 보이게 -->	
            	<form id="check_form_id" method="post">
-      			<input type="submit" class="form-control" value="Please"/>
-      			
+      			<input type="submit" class="" value="Please"/>
+      		
 			    <table border="5" width ="50%" cellspacing="10">    
 			    
 			        <c:forEach items="${postList}" var="postObject" >
 					    <tr>
 					    	<!-- 클릭 이벤트 넣을 것 -->
-					    	<th><input type="checkbox" id="check_id" class="form-control" 
+					    	<th><input type="checkbox" id="check_id" class="" 
 					    	value="${postObject.postNum}">${postObject.postSubject}</th>			
 					    </tr>		    
 					    <tr>

@@ -10825,23 +10825,23 @@ a.text-dark:focus, a.text-dark:hover {
   clip: auto;
 }
 
-//
+/* ㅁㄴㅇ */
 
-/*!
- * Start Bootstrap - Clean Blog v4.0.0-beta.2 (https://startbootstrap.com/template-overviews/clean-blog)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-clean-blog/blob/master/LICENSE)
- */
+/* /*! */
+/*  * Start Bootstrap - Clean Blog v4.0.0-beta.2 (https://startbootstrap.com/template-overviews/clean-blog) */
+/*  * Copyright 2013-2017 Start Bootstrap */
+/*  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-clean-blog/blob/master/LICENSE) */
+/*  */ */
 body {
   font-size: 20px;
   color: #212529;
   font-family: 'Lora', 'Times New Roman', serif; }
 
-p {
-  line-height: 1.5;
-  margin: 30px 0; }
-  p a {
-    text-decoration: underline; }
+/* p { */
+/*   line-height: 1.5; */
+/*   margin: 30px 0; } */
+/*   p a { */
+/*     text-decoration: underline; } */
 
 h1,
 h2,
@@ -10860,9 +10860,9 @@ a {
   a:focus, a:hover {
     color: #0085A1; }
 
-blockquote {
-  font-style: italic;
-  color: #868e96; }
+/* blockquote { */
+/*   font-style: italic; */
+/*   color: #868e96; } */
 
 .section-heading {
   font-size: 36px;
@@ -10879,15 +10879,15 @@ blockquote {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px; }
 
-::-moz-selection {
-  color: #fff;
-  background: #0085A1;
-  text-shadow: none; }
+/* ::-moz-selection { */
+/*   color: #fff; */
+/*   background: #0085A1; */
+/*   text-shadow: none; } */
 
-::selection {
-  color: #fff;
-  background: #0085A1;
-  text-shadow: none; }
+/* ::selection { */
+/*   color: #fff; */
+/*   background: #0085A1; */
+/*   text-shadow: none; } */
 
 img::selection {
   color: #fff;
@@ -10897,8 +10897,8 @@ img::-moz-selection {
   color: #fff;
   background: transparent; }
 
-body {
-  -webkit-tap-highlight-color: #0085A1; }
+/* body { */
+/*   -webkit-tap-highlight-color: #0085A1; } */
 
 #mainNav {
   position: absolute;
@@ -10938,7 +10938,7 @@ body {
       -webkit-transition: background-color 0.2s;
       -moz-transition: background-color 0.2s;
       transition: background-color 0.2s;
-      /* Force Hardware Acceleration in WebKit */
+      Force Hardware Acceleration in WebKit
       -webkit-transform: translate3d(0, 0, 0);
       -moz-transform: translate3d(0, 0, 0);
       -ms-transform: translate3d(0, 0, 0);
@@ -10946,7 +10946,7 @@ body {
       transform: translate3d(0, 0, 0);
       -webkit-backface-visibility: hidden; }
       #mainNav.is-fixed {
-        /* when the user scrolls down, we hide the header right above the viewport */
+        when the user scrolls down, we hide the header right above the viewport
         position: fixed;
         top: -67px;
         -webkit-transition: -webkit-transform 0.2s;
@@ -10963,7 +10963,7 @@ body {
           #mainNav.is-fixed .navbar-nav > li.nav-item > a:focus, #mainNav.is-fixed .navbar-nav > li.nav-item > a:hover {
             color: #0085A1; }
       #mainNav.is-visible {
-        /* if the user changes the scrolling direction, we show the header */
+        if the user changes the scrolling direction, we show the header
         -webkit-transform: translate3d(0, 100%, 0);
         -moz-transform: translate3d(0, 100%, 0);
         -ms-transform: translate3d(0, 100%, 0);
