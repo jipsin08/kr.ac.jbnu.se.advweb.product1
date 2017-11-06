@@ -45,18 +45,18 @@
 		         <table border="0">
 		            <tr>
 		               <td>User Name</td>
-		               <td><input type="text" id = "name_id" name="userName" class="form-control" value= "${user.userName}" /> </td>
+		               <td><input type="text" id = "name_id" name="userName" class="" value= "${user.userName}" /> </td>
 		            </tr>
 		            <tr>
 		               <td>Password</td>
-		               <td><input type="password" id = "passwd_id" name="password" class="form-control" value= "${user.password}" /> </td>
+		               <td><input type="password" id = "passwd_id" name="password" class="" value= "${user.password}" /> </td>
 		            </tr>
 <!-- 		            <tr> -->
 <!-- 		               <td>Remember me</td> -->
 <!-- 		               <td><input type="checkbox" id = "rememberMe_id" name="rememberMe" value= "Y" /> </td> -->
 <!-- 		            </tr> -->
 		            <tr>
-						<td colspan="4"><input type="submit" class="form-control" value="로그인"/></td>
+						<td colspan="4"><input type="submit" class="" value="로그인"/></td>
 					</tr>
 		         </table>
 		      </form>
