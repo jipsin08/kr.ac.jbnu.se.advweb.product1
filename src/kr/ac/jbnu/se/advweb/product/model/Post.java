@@ -20,6 +20,37 @@ public class Post {
 		this.postContent = post_content;
 		this.postVisible = post_visible;
 	}
+	
+	//start
+	// Merge 한거
+	public Post(int postNum, String postId, String postNickname, String postSubject, String postContent,
+			String postDate, int postVisible) {
+		super();
+		this.postNum = postNum;
+		this.postId = postId;
+		this.postNickname = postNickname;
+		this.postSubject = postSubject;
+		this.postContent = postContent;
+		this.postDate = postDate;
+		this.postVisible = postVisible;
+	}
+	
+	
+	public Post(String postSubject, String postContent) {
+		super();
+		this.postSubject = postSubject;
+		this.postContent = postContent;
+	}
+	
+	public Post(int postNum, String postSubject, String postContent) {
+		super();
+		this.postNum = postNum;
+		this.postSubject = postSubject;
+		this.postContent = postContent;
+	}
+	
+	// Merge 한거
+	//ene
 
 	public String getPostId() {
 		return postId;

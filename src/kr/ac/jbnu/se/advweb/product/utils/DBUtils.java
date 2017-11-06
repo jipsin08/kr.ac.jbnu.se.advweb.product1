@@ -373,6 +373,52 @@ public static List<Post> searchByContent(Connection conn, String input_value) th
 	//
 	//PostBoard
 	//
+
+	public static void deletePost(Connection conn, String postNum) throws SQLException {
+		String sql = "Delete From post_board where post_num= ?";
+	
+		PreparedStatement pstm = conn.prepareStatement(sql);
+	
+		pstm.setString(1, postNum);
+	
+		pstm.executeUpdate();
+	}
+	
+	public static void updatePost(Connection conn, Post postboard) throws SQLException {
+		//post_date=sysdate() <- DB 수정 시간 갱신
+		String sql = "Update post_board set post_subject=?, post_content=?, post_date=sysdate() where post_num=? ";
+		//Update post_board set post_subject="살려주세요", post_content="배가고파요", post_date=sysdate() where post_num=27; 쿼리문은 잘댐...
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		
+		//edit post에 필요한건 제목이랑 내용이랑 게시물 번호
+		pstm.setString(1, postboard.getPostSubject());
+		pstm.setString(2, postboard.getPostContent());
+		pstm.setInt(3, postboard.getPostNum());
+		pstm.executeUpdate();
+	}
+	
+	public static Post findPost(Connection conn, int postNum) throws SQLException {
+		String sql = "Select a.post_num, a.post_id, a.post_nickname, a.post_subject, a.post_content, a.post_date, a.post_visible"
+				+ " from post_board a where a.post_num=?";
+	
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		pstm.setInt(1, postNum);
+	
+		ResultSet rs = pstm.executeQuery();
+	
+		while (rs.next()) {
+			String postId = rs.getString("post_id");
+			String postNickname = rs.getString("post_nickname");
+			String postSubject = rs.getString("post_subject");
+			String postContent = rs.getString("post_content");
+			String postDate = rs.getString("post_date");
+			int postVisible = rs.getInt("post_visible");
+			
+			Post postboard = new Post(postNum, postId, postNickname, postSubject, postContent, postDate, postVisible);
+			return postboard;
+		}
+		return null;
+	}
 	
 	//DB에서 뽑아오기
 	public static List<Post> queryPost(Connection conn) throws SQLException {

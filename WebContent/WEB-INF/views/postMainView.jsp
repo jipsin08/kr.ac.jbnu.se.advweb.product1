@@ -132,13 +132,20 @@
            	<!-- 세로로 리스트 보이게 -->	
            	<form id="check_form_id" method="post">
       			<input type="submit" class="form-control" value="Please"/>
+      			
 			    <table border="5" width ="50%" cellspacing="10">    
+			    
 			        <c:forEach items="${postList}" var="postObject" >
 					    <tr>
-					    	<th><input type="checkbox" id="check_id" class="form-control" value="${postObject.postNum}">${postObject.postSubject}</th>			
+					    	<!-- 클릭 이벤트 넣을 것 -->
+					    	<th><input type="checkbox" id="check_id" class="form-control" 
+					    	value="${postObject.postNum}">${postObject.postSubject}</th>			
 					    </tr>		    
 					    <tr>
-					    	<td height="200">${postObject.postContent}</td>			
+					    	<td height="200">
+					    	<!-- 제목이 공사당해서, 글 내용 클릭하면 postSingle 이동하게 임시 수정-->
+					    	<a href="postSingle?postNum=${postObject.postNum}">${postObject.postContent}</a>
+					    	</td>			
 					    </tr>
 					    <tr>
 					    	<td>${postObject.postDate}</td>			
