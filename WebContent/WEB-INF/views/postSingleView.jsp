@@ -18,6 +18,7 @@
 			}
 			
 		</script>
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script>
 		
@@ -92,8 +93,8 @@
 	        <c:forEach items="${commentList}" var="comment" >
 	        <tr align="center" valign="middle">
 	            	<td>
-						<p>${comment.userName}</p>
-						<p>${comment.comment}</p>
+						<p>작성자 : ${comment.userName}</p>
+						<p>댓글 내용 : ${comment.comment}</p>
 	            	</td>
 	            <br>
 	        </tr>

@@ -27,7 +27,10 @@ public class DeletePostServlet extends HttpServlet {
 			throws ServletException, IOException {
 		Connection conn = MyUtils.getStoredConnection(request);
 
-		String postNum = (String) request.getParameter("postNum");
+//		String postNum = (String) request.getParameter("postNum");
+		
+		String postNumStr = (String) request.getParameter("postNum");
+		int postNum = Integer.parseInt(postNumStr);
 
 		try {
 			DBUtils.deletePost(conn, postNum);

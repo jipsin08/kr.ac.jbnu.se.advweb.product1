@@ -34,6 +34,29 @@
 			});
 		})
 		</script>
+		
+<!-- 		태규형 -->
+		
+		<script>
+			<!-- 정말 삭제할래? -->
+			function validate() {
+				$('input:checkbox[id="checkbox_id"]').each(function() {
+					if(this.checked) {
+						//alert(this.value);
+						if (confirm("선택한 게시물을 삭제하시겠습니까?") == true) {
+							//alert("deletePost?postNum=$("#check_id").val()");
+							location.href='deletePost?postNum='+(this.value);
+					    }
+					}
+				});
+			}
+			
+		</script>
+		
+		
+<!-- 		태규형끝 -->
+		
+		
 				
 		<script type="text/javascript">
 			function sendIt() {
@@ -132,25 +155,60 @@
            	</form>
            	
            	<!-- 세로로 리스트 보이게 -->	
-           	<form id="check_form_id" method="post">
-      			<input type="submit" class="" value="Please"/>
+<!--            	<form id="check_form_id" method="post"> -->
+<!--       			<input type="submit" class="" value="Please"/> -->
       		
+<!-- 			    <table border="5" width ="50%" cellspacing="10">     -->
+			    
+<%-- 			        <c:forEach items="${postList}" var="postObject" > --%>
+<!-- 					    <tr> -->
+<!-- 					    	클릭 이벤트 넣을 것 -->
+<!-- 					    	<th><input type="checkbox" id="check_id" class=""  -->
+<%-- 					    	value="${postObject.postNum}">${postObject.postSubject}</th>			 --%>
+<!-- 					    </tr>		     -->
+<!-- 					    <tr> -->
+<!-- 					    	<td height="200"> -->
+<!-- 					    	제목이 공사당해서, 글 내용 클릭하면 postSingle 이동하게 임시 수정 -->
+<%-- 					    	<a href="postSingle?postNum=${postObject.postNum}">${postObject.postContent}</a> --%>
+<!-- 					    	</td>			 -->
+<!-- 					    </tr> -->
+<!-- 					    <tr> -->
+<%-- 					    	<td>${postObject.postDate}</td>			 --%>
+<!-- 					    </tr> -->
+					    
+<!-- 					    css 전 임시 -->
+<!-- 					    <tr></tr> -->
+<!-- 					    <tr></tr> -->
+<!-- 					    <tr></tr> -->
+<!-- 					    <tr></tr> -->
+<!-- 					    <tr></tr> -->
+<!-- 					    <tr></tr> -->
+					    
+<%-- 		       		</c:forEach> --%>
+<!-- 				</table> -->
+<!-- 			</form> -->
+			
+				<!-- 세로로 리스트 보이게 -->	
+           	<form id="check_form_id" method="post">
+           		<!-- doPost -->
+      			<input type="button" class="form-control" value="Checked item DELETE" onclick="validate()"/>
+      			
 			    <table border="5" width ="50%" cellspacing="10">    
 			    
 			        <c:forEach items="${postList}" var="postObject" >
 					    <tr>
-					    	<!-- 클릭 이벤트 넣을 것 -->
-					    	<th><input type="checkbox" id="check_id" class="" 
-					    	value="${postObject.postNum}">${postObject.postSubject}</th>			
+					    	<!-- 체크 박스 부분 -->
+					    	<th>
+					    	<input type="checkbox" name="postNum" id="checkbox_id" class="form-control" value="${postObject.postNum}">
+					    		<a href="postSingle?postNum=${postObject.postNum}">제목: ${postObject.postSubject}</a>
+					    		</th>			
 					    </tr>		    
 					    <tr>
-					    	<td height="200">
-					    	<!-- 제목이 공사당해서, 글 내용 클릭하면 postSingle 이동하게 임시 수정-->
-					    	<a href="postSingle?postNum=${postObject.postNum}">${postObject.postContent}</a>
-					    	</td>			
+					    	<td height="200">${postObject.postContent}</td>			
 					    </tr>
 					    <tr>
-					    	<td>${postObject.postDate}</td>			
+					    	<td><strong>작성시간:</strong> ${postObject.postDate} <strong>작성자:</strong> ${postObject.postId} 
+					    	 <strong>닉네임:</strong> ${postObject.postNickname}</td>			
 					    </tr>
 					    
 					    <!-- css 전 임시 -->

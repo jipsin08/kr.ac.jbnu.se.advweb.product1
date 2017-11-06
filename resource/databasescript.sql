@@ -14,7 +14,6 @@ create table POST_COMMENT
 	USER_NAME VARCHAR(30) not null,
 	COMMENT VARCHAR(30) not null,
 	post_num int not null,
-	foreign key (post_num) references POST_BOARD(post_num),
 	primary key (COMMENT_ID)
 );
 

@@ -68,7 +68,9 @@ public class PostMainServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 				Connection conn = (Connection) MyUtils.getStoredConnection(request);
+				//체크박스 넘어온거
 				String check_id = (String) request.getParameter("checked_id");
+				
 				String search_option = (String) request.getParameter("option");
 				
 				//what if it's null?
@@ -78,17 +80,15 @@ public class PostMainServlet extends HttpServlet {
 				List<Post> list = null;
 				
 				System.out.println("============");
-				System.out.println(check_id);
+//				System.out.println(check_id);
 			
+				
+				
+				
+				
 				try {
 					if (input_value.equals("")) {
 					
-					if(check_id.equals("")) {
-						ErrorString = "Fail to connect.";
-						}
-					else {
-						hasError = true;
-					}
 				}else {
 					
 					if(search_option.equals("username")) {
@@ -167,3 +167,4 @@ public class PostMainServlet extends HttpServlet {
 			}
 				
 	}
+
